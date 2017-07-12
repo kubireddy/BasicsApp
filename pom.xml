@@ -107,8 +107,9 @@
     			<version>2.2</version>
 				<!-- <configuration> <path>/BasicsApp</path> </configuration> -->
 				<configuration>
-					<url>http://localhost:8080/BasicsApp</url>
-					<server>TomcatServer</server>
+					<path>/BasicsApp</path>
+        			<port>8080</port>
+        			<httpsPort>9443</httpsPort>
 					<username>kubireddy</username>
 					<password>kubireddy</password>
 				</configuration>
