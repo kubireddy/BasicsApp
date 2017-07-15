@@ -79,8 +79,8 @@
 							</div>
 							<div class="modal-footer">
 								<button type="submit" class="btn btn-primary" form="signupForm" id="signupBurronId" disabled="disabled" onclick="return recpchaValidate();">Register</button>
-								<button class="btn btn-primary" data-dismiss="modal" form="signupForm" onclick="return clearOnCancel();">Close</button>
-								<button class="btn btn-danger" type="reset" form="signupForm">Reset</button>
+								<button class="btn btn-primary" data-dismiss="modal" form="signupForm" onclick="clearOnCancel(); validate();">Close</button>
+								<button class="btn btn-danger" type="reset" form="signupForm" onclick="clearOnCancel(); validate();">Reset</button>
 							</div>
 						</div>
 					</div>

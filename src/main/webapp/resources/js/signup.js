@@ -124,11 +124,10 @@ function clearOnCancel(){
 	document.getElementById("signupForm").reset();
 }
 
-
 function isEmpty(val){
-    return (val == undefined || val == null || val.length <= 0) ? true : false;
+    return (val == undefined || val == null || val.length <= 0 || val == "" || val ==" " ) ? true : false;
 }
 
 function isNotEmpty(val){
-    return (val == undefined || val == null || val.length <= 0) ? false : true;
+    return (val == undefined || val == null || val.length <= 0 || val == "" || val ==" ") ? false : true;
 }
