@@ -42,7 +42,7 @@
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header=">
-								<button class="close" data-dismiss="modal">&times;</button>
+								<button class="close" data-dismiss="modal" onclick="clearOnCancel(); validate();">&times;</button>
 								<center><h2 class="modal-title"><font color="blue">Registration</font></h2></center>
 								<br>
 								<center><h6><font color="black">Please fill all required (*) fields</font></h6></center>
