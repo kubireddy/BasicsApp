@@ -26,11 +26,6 @@ public class BaseController {
 		return HOME_PAGE;
 	}
 
-	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public String signup(ModelMap model) {
-		return "signup";
-	}
-	
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String about(ModelMap model) {
 		return "about";
@@ -39,6 +34,11 @@ public class BaseController {
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
 	public String contact(ModelMap model) {
 		return "contact";
+	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public String signup(ModelMap model) {
+		return "signup";
 	}
 
 }
