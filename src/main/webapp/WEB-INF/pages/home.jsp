@@ -43,34 +43,38 @@
 						<div class="modal-content">
 							<div class="modal-header=">
 								<button class="close" data-dismiss="modal">&times;</button>
-								<center><h4 class="modal-title"><font color="blue">Registration</font></h4></center>
+								<center><h2 class="modal-title"><font color="blue">Registration</font></h2></center>
+								<br>
+								<center><h6><font color="black">Please fill all required (*) fields</font></h6></center>
 							</div>
 							<div class="modal-body">
-								<form id="signupForm">
+								<form id="signupForm" action="signup" method="get">
 									<div class="form-group">
-										<label for="firstName">First Name:</label> 
+										<label for="firstName">First Name*</label> 
 										<input type="text" class="form-control" id="firstName" placeholder="First Name" onKeyUp="validate();" required>
 																<center><font color="red"><p id="firstNameError"></p></font></center>
 									</div>
 									<div class="form-group">
-										<label for="lastName">Last Name:</label> <input type="text"
+										<label for="lastName">Last Name*</label> <input type="text"
 											class="form-control" id="lastName" placeholder="Last Name" onKeyUp="validate();"
 											required><center><font color="red"><p id="lastNameError"></p></font></center>
 									</div>
 									<div class="form-group">
-										<label for="signUpEmail">Email:</label> 
+										<label for="signUpEmail">Email*</label> 
 										<input type="email" class="form-control" id="signUpEmail" placeholder="Email" onKeyUp="validate();" required>
 															<center><font color="red"><p id="signUpEmailError"></p></font></center>
 									</div>
 									<div class="form-group">
-										<label for="pwd">Password:</label> 
-										<input type="password" class="form-control" id="pwd" placeholder="Password" required>
+										<label for="spwd">Password*</label> 
+										<input type="password" class="form-control" id="spwd" placeholder="Password" onKeyUp="validate();" required>
+																<center><font color="red"><p id="spwdError"></p></font></center>
 									</div>
 									<div class="form-group">
-										<label for="cpwd">Conform Password:</label> 
-										<input type="password" class="form-control" id="cpwd" placeholder="Reenter Password" required>
+										<label for="cpwd">Conform Password*</label> 
+										<input type="password" class="form-control" id="cpwd" placeholder="Reenter Password" onKeyUp="validate();" required>
+																<center><font color="red"><p id="cpwdError"></p></font></center>
 									</div>
-									<div class="g-recaptcha" data-sitekey="6Ld0LikUAAAAAFTY5TOCkpgo0tM6mRHSrs5yXK5D"></div>
+									<div class="g-recaptcha" data-sitekey="6Ld0LikUAAAAAFTY5TOCkpgo0tM6mRHSrs5yXK5D" ></div>
 								</form>
 							</div>
 							<div class="modal-footer">

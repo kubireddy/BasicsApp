@@ -13,7 +13,7 @@
 <link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
 </head>
 <body>
-	<%@include file="header.jsp" %>
+	
 	
 	Hello, This is Sign Up
 
