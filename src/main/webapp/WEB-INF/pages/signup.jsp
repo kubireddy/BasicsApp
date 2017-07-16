@@ -15,7 +15,9 @@
 <body>
 	
 	
-	Hello, This is Sign Up
+	<h1>user : ${signUpForm.firstName}</h1>
+	<h1>user : ${signUpForm.signUpPassword}</h1>
+	
 
 	<%@include file="footer.jsp" %>
 

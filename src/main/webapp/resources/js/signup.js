@@ -121,7 +121,7 @@ function recpchaValidate(){
 }
 
 function clearOnCancel(){
-	document.getElementById("signupForm").reset();
+	document.getElementById("signUpForm").reset();
 }
 
 function isEmpty(val){

@@ -13,10 +13,10 @@
 <link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
 </head>
 <body>
-	<form role="form" id="signupForm" action="signup" method="get">
+	<form role="form" id="signUpForm" action="signup" method="post">
 		<div class="form-group">
 			<label for="firstName">First Name*</label> <input type="text"
-				class="form-control" id="firstName" placeholder="First Name"
+				class="form-control" id="firstName" name="firstName" placeholder="First Name"
 				onKeyUp="validate();" required>
 			<center>
 				<font color="red"><p id="firstNameError"></p></font>
@@ -24,7 +24,7 @@
 		</div>
 		<div class="form-group">
 			<label for="lastName">Last Name*</label> <input type="text"
-				class="form-control" id="lastName" placeholder="Last Name"
+				class="form-control" id="lastName" name="lastName" placeholder="Last Name"
 				onKeyUp="validate();" required>
 			<center>
 				<font color="red"><p id="lastNameError"></p></font>
@@ -32,7 +32,7 @@
 		</div>
 		<div class="form-group">
 			<label for="signUpEmail">Email*</label> <input type="email"
-				class="form-control" id="signUpEmail" placeholder="Email"
+				class="form-control" id="signUpEmail" name="signUpEmail" placeholder="Email"
 				onKeyUp="validate();" required>
 			<center>
 				<font color="red"><p id="signUpEmailError"></p></font>
@@ -40,7 +40,7 @@
 		</div>
 		<div class="form-group">
 			<label for="spwd">Password*</label> <input type="password"
-				class="form-control" id="spwd" placeholder="Password"
+				class="form-control" id="spwd" name="signUpPassword" placeholder="Password"
 				onKeyUp="validate();" required>
 			<center>
 				<font color="red"><p id="spwdError"></p></font>
@@ -59,16 +59,16 @@
 		<br>
 		<div class="row">
 			<div class="col-sm-2">
-				<button type="submit" class="btn btn-primary" form="signupForm"
+				<button type="submit" class="btn btn-primary" form="signUpForm"
 					id="signupBurronId" disabled="disabled"
 					onclick="return recpchaValidate();">Register</button>
 			</div>
 			<div class="col-sm-2">
 				<button class="btn btn-primary" data-dismiss="modal"
-					form="signupForm" onclick="clearOnCancel(); validate();">Close</button>
+					form="signUpForm" onclick="clearOnCancel(); validate();">Close</button>
 			</div>
 			<div class="col-sm-2">
-				<button class="btn btn-danger" type="reset" form="signupForm"
+				<button class="btn btn-danger" type="reset" form="signUpForm"
 					onclick="clearOnCancel(); validate();">Reset</button>
 			</div>
 		</div>

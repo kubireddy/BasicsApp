@@ -3,9 +3,10 @@ package com.klr.controller;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class BaseController {
@@ -36,9 +37,23 @@ public class BaseController {
 		return "contact";
 	}
 	
-	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public String signup(ModelMap model) {
-		return "signup";
+	//This is to match the all Form Fields with Form Backing Bean
+	// value = popup.jsp
+	@RequestMapping(value = "/popup", method = RequestMethod.GET)
+	public ModelAndView homePage() {
+	   ModelAndView model = new ModelAndView();
+	   model.addObject("signUpForm", new SignUpForm());
+	   model.setViewName("popup");
+	   return model;
+	}
+	
+	//here We can read the all Form fields and send it to next Jsp Page.
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	public ModelAndView signup(@ModelAttribute("signUpForm") SignUpForm signUpForm) {
+		ModelAndView model = new ModelAndView();
+		model.addObject("signUpForm", signUpForm);
+		model.setViewName("signup");
+		return model;
 	}
 
 }
