@@ -20,6 +20,12 @@ div.sign {
 	padding-right: 50%;
 	text-align: left;
 }
+div.resend {
+	padding-top: 5%;
+	padding-left: 5%;
+	padding-right: 50%;
+	text-align: left;
+}
 </style>
 </head>
 <body>
@@ -57,6 +63,45 @@ div.sign {
 		</form>
 	</div>
 
+	<div class="resend">
+	<div class="row">
+			<div class="col-sm-3"> <button type="submit" class="btn btn-primary" data-target="#resendModal" data-toggle="modal">Click Me</button> </div>
+				<div class="modal" id="resendModal" tabindex="-1">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header=">
+								<button class="close" data-dismiss="modal">&times;</button>
+								<center><h2 class="modal-title"><font color="blue">Please Reenter Email Id</font></h2></center>
+							</div>
+							<div class="modal-body">
+									<form role="form" id="resendForm" action="resend" method="post">
+										<div class="form-group">
+											<label for="emailResend">Email*</label> <input type="email"
+												class="form-control" id="emailResend" name="emailResend" placeholder="Email" required>
+<%-- 											<center> --%>
+<!-- 												<font color="red"><p id="firstNameError"></p></font> -->
+<%-- 											</center> --%>
+										</div>
+										<br>
+										<div class="row">
+											<div class="col-sm-2">
+												<button type="submit" class="btn btn-primary" form="resendForm"
+													id="signupBurronId" >Resend</button>
+											</div>
+											<div class="col-sm-2">
+												<button class="btn btn-primary" data-dismiss="modal"
+													form="resendForm" >Close</button>
+											</div>
+										</div>
+									</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			<div class="col-sm-3"> <p>Have not Received the Verification Code?</p> </div>
+		</div>
+	</div>
+	
 	<%@include file="footer.jsp"%>
 
 	<!-- Bootstrap core JavaScript
