@@ -9,17 +9,55 @@
 <meta name="author" content="Linga Reddy Kubireddy">
 <title>Home</title>
 <!-- Minified CSS -->
-<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"
+	rel="stylesheet">
+<link href="<c:url value="/resources/css/starter-template.css" />"
+	rel="stylesheet">
+<style type="text/css">
+div.sign {
+	padding-top: 10%;
+	padding-left: 5%;
+	padding-right: 50%;
+	text-align: left;
+}
+</style>
 </head>
 <body>
-	
-	
-	<h1>user : ${signUpForm.firstName}</h1>
-	<h1>user : ${signUpForm.signUpPassword}</h1>
-	
 
-	<%@include file="footer.jsp" %>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-text pull-left">
+				<!-- class="navbar-text pull-right" -->
+				<h1>Verification</h1>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="sign">
+		<div>
+			<font color="blue"><h6>Please verify the Verification
+					Token Which was sent to your Mail</h6></font>
+		</div>
+		<br>
+		<form role="form" id="verificationForm" action="verify" method="post">
+			<div class="form-group">
+				<label for="verificationToken">Verification Token*</label> <input
+					type="text" class="form-control" id="verificationToken"
+					name="verificationToken" placeholder="Token" required>
+				<!-- <center>
+				<font color="red"><p id="firstNameError"></p></font>
+			</center> -->
+			</div>
+			<div class="row">
+				<div class="col-sm-2">
+					<button type="submit" class="btn btn-primary"
+						form="verificationForm">Verify</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<%@include file="footer.jsp"%>
 
 	<!-- Bootstrap core JavaScript
     ================================================== 
