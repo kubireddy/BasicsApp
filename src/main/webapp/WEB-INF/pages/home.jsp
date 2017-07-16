@@ -48,39 +48,7 @@
 								<center><h6><font color="black">Please fill all required (*) fields</font></h6></center>
 							</div>
 							<div class="modal-body">
-								<form id="signupForm" action="signup" method="get">
-									<div class="form-group">
-										<label for="firstName">First Name*</label> 
-										<input type="text" class="form-control" id="firstName" placeholder="First Name" onKeyUp="validate();" required>
-																<center><font color="red"><p id="firstNameError"></p></font></center>
-									</div>
-									<div class="form-group">
-										<label for="lastName">Last Name*</label> <input type="text"
-											class="form-control" id="lastName" placeholder="Last Name" onKeyUp="validate();"
-											required><center><font color="red"><p id="lastNameError"></p></font></center>
-									</div>
-									<div class="form-group">
-										<label for="signUpEmail">Email*</label> 
-										<input type="email" class="form-control" id="signUpEmail" placeholder="Email" onKeyUp="validate();" required>
-															<center><font color="red"><p id="signUpEmailError"></p></font></center>
-									</div>
-									<div class="form-group">
-										<label for="spwd">Password*</label> 
-										<input type="password" class="form-control" id="spwd" placeholder="Password" onKeyUp="validate();" required>
-																<center><font color="red"><p id="spwdError"></p></font></center>
-									</div>
-									<div class="form-group">
-										<label for="cpwd">Conform Password*</label> 
-										<input type="password" class="form-control" id="cpwd" placeholder="Reenter Password" onKeyUp="validate();" required>
-																<center><font color="red"><p id="cpwdError"></p></font></center>
-									</div>
-									<div class="g-recaptcha" data-sitekey="6Ld0LikUAAAAAFTY5TOCkpgo0tM6mRHSrs5yXK5D" ></div>
-								</form>
-							</div>
-							<div class="modal-footer">
-								<button type="submit" class="btn btn-primary" form="signupForm" id="signupBurronId" disabled="disabled" onclick="return recpchaValidate();">Register</button>
-								<button class="btn btn-primary" data-dismiss="modal" form="signupForm" onclick="clearOnCancel(); validate();">Close</button>
-								<button class="btn btn-danger" type="reset" form="signupForm" onclick="clearOnCancel(); validate();">Reset</button>
+								<%@include file="popup.jsp" %>
 							</div>
 						</div>
 					</div>
