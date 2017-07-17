@@ -16,7 +16,7 @@
 	<%@include file="header.jsp" %>
 
 	<div class="starter-template">
-        <h1>Application Head Line</h1>
+        <h1 class="text-info"><strong>Application Head Line</strong></h1>
         <p> website. bmscbugfu uhbwegcbewg bcwegcbewu cgecbwieyg cenchc uwhccjci bcgh;qdw0odwk kncheck  kf8f hfgfbigf jfigfkbefigekfk kjfiiwfifhiuhf jhdiweg.</p>
     </div>
 
@@ -38,14 +38,14 @@
 		<br />
 		<div class="row">
 			<div class="col-sm-2"> <button type="submit" class="btn btn-primary" data-target="#signupModal" data-toggle="modal">Sign Up</button> </div>
-				<div class="modal" id="signupModal" tabindex="-1">
+				<div class="modal bg-info" id="signupModal" tabindex="-1">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header=">
 								<button class="close" data-dismiss="modal" onclick="clearOnCancel(); validate();">&times;</button>
-								<center><h2 class="modal-title"><font color="blue">Registration</font></h2></center>
+								<h2 class="modal-title text-center text-primary"><strong>Registration</strong></h2>
 								<br>
-								<center><h6><font color="black">Please fill all required (*) fields</font></h6></center>
+								<h6 class="text-center"><strong>Please fill all required (*) fields</strong></h6>
 							</div>
 							<div class="modal-body">
 								<%@include file="popup.jsp" %>
@@ -53,7 +53,7 @@
 						</div>
 					</div>
 				</div>
-			<div class="col-sm-2"> <p>New to App?</p> </div>
+			<div class="col-sm-2"><strong><p>New to App?</p></div></strong>
 		</div>
 	</div>
 

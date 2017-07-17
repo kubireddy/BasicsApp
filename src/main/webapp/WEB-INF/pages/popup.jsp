@@ -22,7 +22,7 @@
 				class="form-control" id="firstName" name="firstName"
 				placeholder="First Name" onKeyUp="validate();" required>
 			<div>
-				<p id="firstNameError" class="small text-center text-danger"></p>
+				<p id="firstNameError" class="small font-weight-bold text-center text-danger"></p>
 			</div>
 		</div>
 		<div class="form-group">
