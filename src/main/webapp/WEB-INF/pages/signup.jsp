@@ -28,6 +28,11 @@ div.resend {
 	text-align: left;
 }
 </style>
+<script type="text/javascript">
+function clearOnCancelForResend(){
+	document.getElementById("resendForm").reset();
+}
+</script>
 </head>
 <body>
 
@@ -66,11 +71,11 @@ div.resend {
 				<button type="submit" class="btn btn-primary"
 					data-target="#resendModal" data-toggle="modal">Click Me</button>
 			</div>
-			<div class="modal" id="resendModal" tabindex="-1">
+			<div class="modal bg-info" id="resendModal" tabindex="-1">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header=">
-							<button class="close" data-dismiss="modal">&times;</button>
+							<button class="close" data-dismiss="modal" onclick="clearOnCancelForResend();">&times;</button>
 								<h2 class="modal-title text-center text-primary"><strong>Please Reenter Email Id</strong></h2>
 						</div>
 						<div class="modal-body">
@@ -87,7 +92,7 @@ div.resend {
 											form="resendForm" id="signupBurronId">Resend</button>
 									</div>
 									<div class="col-sm-2">
-										<button class="btn btn-primary" data-dismiss="modal"
+										<button class="btn btn-primary" data-dismiss="modal" onclick="clearOnCancelForResend();"
 											form="resendForm">Close</button>
 									</div>
 								</div>
