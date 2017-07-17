@@ -9,50 +9,53 @@
 <meta name="author" content="Linga Reddy Kubireddy">
 <title>Home</title>
 <!-- Minified CSS -->
-<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"
+	rel="stylesheet">
+<link href="<c:url value="/resources/css/starter-template.css" />"
+	rel="stylesheet">
 </head>
 <body>
+	<!-- No worries we not need to set the padding or does not need div container bcoz its being called in another JSP -->
 	<form role="form" id="signUpForm" action="signup" method="post">
 		<div class="form-group">
 			<label for="firstName">First Name*</label> <input type="text"
-				class="form-control" id="firstName" name="firstName" placeholder="First Name"
-				onKeyUp="validate();" required>
-			<center>
-				<font color="red"><p id="firstNameError"></p></font>
-			</center>
+				class="form-control" id="firstName" name="firstName"
+				placeholder="First Name" onKeyUp="validate();" required>
+			<div>
+				<p id="firstNameError" class="small text-center text-danger"></p>
+			</div>
 		</div>
 		<div class="form-group">
 			<label for="lastName">Last Name*</label> <input type="text"
-				class="form-control" id="lastName" name="lastName" placeholder="Last Name"
-				onKeyUp="validate();" required>
-			<center>
-				<font color="red"><p id="lastNameError"></p></font>
-			</center>
+				class="form-control" id="lastName" name="lastName"
+				placeholder="Last Name" onKeyUp="validate();" required>
+			<div>
+				<p id="lastNameError" class="small text-center text-danger"></p>
+			</div>
 		</div>
 		<div class="form-group">
 			<label for="signUpEmail">Email*</label> <input type="email"
-				class="form-control" id="signUpEmail" name="signUpEmail" placeholder="Email"
-				onKeyUp="validate();" required>
-			<center>
-				<font color="red"><p id="signUpEmailError"></p></font>
-			</center>
+				class="form-control" id="signUpEmail" name="signUpEmail"
+				placeholder="Email" onKeyUp="validate();" required>
+			<div>
+				<p id="signUpEmailError" class="small text-center text-danger"></p>
+			</div>
 		</div>
 		<div class="form-group">
 			<label for="spwd">Password*</label> <input type="password"
-				class="form-control" id="spwd" name="signUpPassword" placeholder="Password"
-				onKeyUp="validate();" required>
-			<center>
-				<font color="red"><p id="spwdError"></p></font>
-			</center>
+				class="form-control" id="spwd" name="signUpPassword"
+				placeholder="Password" onKeyUp="validate();" required>
+			<div>
+				<p id="spwdError" class="small text-center text-danger"></p>
+			</div>
 		</div>
 		<div class="form-group">
 			<label for="cpwd">Conform Password*</label> <input type="password"
 				class="form-control" id="cpwd" placeholder="Reenter Password"
 				onKeyUp="validate();" required>
-			<center>
-				<font color="red"><p id="cpwdError"></p></font>
-			</center>
+			<div>
+				<p id="cpwdError" class="small text-center text-danger"></p>
+			</div>
 		</div>
 		<div class="g-recaptcha"
 			data-sitekey="6Ld0LikUAAAAAFTY5TOCkpgo0tM6mRHSrs5yXK5D"></div>
