@@ -12,7 +12,7 @@
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
 </head>
-<body>
+<body style="background-color:Azure">
 	<%@include file="header.jsp" %>
 
 	<%@include file="footer.jsp" %>

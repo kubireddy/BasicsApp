@@ -34,7 +34,7 @@ function clearOnCancelForResend(){
 }
 </script>
 </head>
-<body>
+<body style="background-color:Azure">
 
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -74,11 +74,11 @@ function clearOnCancelForResend(){
 			<div class="modal bg-info" id="resendModal" tabindex="-1">
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<div class="modal-header=">
+						<div class="modal-header=" style="background-color:LightCyan">
 							<button class="close" data-dismiss="modal" onclick="clearOnCancelForResend();">&times;</button>
 								<h2 class="modal-title text-center text-primary"><strong>Please Reenter Email Id</strong></h2>
 						</div>
-						<div class="modal-body">
+						<div class="modal-body" style="background-color:LightCyan">
 							<form role="form" id="resendForm" action="resend" method="post">
 								<div class="form-group">
 									<label for="emailResend">Email*</label> <input type="email"

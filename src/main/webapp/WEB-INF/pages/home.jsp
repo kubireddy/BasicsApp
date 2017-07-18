@@ -12,7 +12,7 @@
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
 </head>
-<body>
+<body style="background-color:Azure">
 	<%@include file="header.jsp" %>
 
 	<div class="starter-template">
@@ -41,13 +41,13 @@
 				<div class="modal bg-info" id="signupModal" tabindex="-1">
 					<div class="modal-dialog">
 						<div class="modal-content">
-							<div class="modal-header=">
+							<div class="modal-header=" style="background-color:LightCyan">
 								<button class="close" data-dismiss="modal" onclick="clearOnCancel(); validate();">&times;</button>
 								<h2 class="modal-title text-center text-primary"><strong>Registration</strong></h2>
 								<br>
 								<h6 class="text-center"><strong>Please fill all required (*) fields</strong></h6>
 							</div>
-							<div class="modal-body">
+							<div class="modal-body" style="background-color:LightCyan">
 								<%@include file="popup.jsp" %>
 							</div>
 						</div>
