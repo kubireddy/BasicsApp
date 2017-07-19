@@ -1,4 +1,4 @@
-package com.klr.controller;
+package com.klr.model;
 
 public class SignUpForm {
 

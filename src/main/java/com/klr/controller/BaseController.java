@@ -1,5 +1,8 @@
 package com.klr.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -7,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.klr.model.SignUpForm;
 
 @Controller
 public class BaseController {
@@ -16,9 +21,6 @@ public class BaseController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String welcome(ModelMap model) {
-//		model.addAttribute("message", "Welcome");
-//		model.addAttribute("counter", ++counter);
-//		logger.debug("[welcome] counter : {}", counter);
 		return HOME_PAGE;
 	}
 	
@@ -53,6 +55,13 @@ public class BaseController {
 		ModelAndView model = new ModelAndView();
 		model.addObject("signUpForm", signUpForm);
 		model.setViewName("signup");
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("FirstName", signUpForm.getFirstName());
+		map.put("LastName", signUpForm.getLastName());
+		map.put("EmailId", signUpForm.getSignUpEmail());
+		map.put("Password", signUpForm.getSignUpPassword());
+		
 		return model;
 	}
 
