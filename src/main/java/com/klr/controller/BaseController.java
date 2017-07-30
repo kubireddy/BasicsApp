@@ -62,6 +62,7 @@ public class BaseController {
 		map.put("EmailId", signUpForm.getSignUpEmail());
 		map.put("Password", signUpForm.getSignUpPassword());
 		
+		
 		return model;
 	}
 

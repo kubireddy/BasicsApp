@@ -23,6 +23,7 @@
 	</bean>
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<import resource="classpath:/spring-module.xml" />
 	
 	<mvc:annotation-driven />
 
