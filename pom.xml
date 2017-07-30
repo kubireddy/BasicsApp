@@ -12,7 +12,7 @@
 		<spring.version>4.1.1.RELEASE</spring.version>
 		<jstl.version>1.2</jstl.version>
 		<junit.version>4.11</junit.version>
-		<logback.version>1.0.13</logback.version>
+<!-- 		<log4j.version>1.2.17</log4j.version> -->
 		<jcl-over-slf4j.version>1.7.5</jcl-over-slf4j.version>
 	</properties>
 
@@ -44,11 +44,12 @@
 			<version>${jcl-over-slf4j.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
+		<!-- Log4j -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>log4j</groupId> -->
+<!-- 			<artifactId>log4j</artifactId> -->
+<!-- 			<version>${log4j.version}</version> -->
+<!-- 		</dependency> -->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
