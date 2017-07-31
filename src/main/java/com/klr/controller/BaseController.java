@@ -4,20 +4,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.klr.model.SignUpForm;
+import com.klr.repositoryAndService.RepositoryService;
 
 @Controller
 public class BaseController {
 
 	private static final String HOME_PAGE = "home";
 	private final static org.slf4j.Logger logger = LoggerFactory.getLogger(BaseController.class);
+	
+	private RepositoryService repositoryService;
+	
+	@Autowired
+    public BaseController(@Qualifier("signupServiceImpl") RepositoryService repositoryService){
+          this.repositoryService = repositoryService;
+    }
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String welcome(ModelMap model) {
@@ -62,6 +73,7 @@ public class BaseController {
 		map.put("EmailId", signUpForm.getSignUpEmail());
 		map.put("Password", signUpForm.getSignUpPassword());
 		
+		repositoryService.save(map);
 		
 		return model;
 	}

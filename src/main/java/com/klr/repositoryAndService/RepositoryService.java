@@ -3,5 +3,6 @@ package com.klr.repositoryAndService;
 import java.util.Map;
 
 public interface RepositoryService {
-	public Map<String, ? extends Object>  saveOrUpdateOrInsert(Map<String, ? extends Object> input);
+	public void save(Map<String, ? extends Object> input);
+	public String checkUserExistance(Map<String, ? extends Object> input);
 }
