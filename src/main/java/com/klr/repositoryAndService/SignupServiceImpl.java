@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.sql.DataSource;
 
@@ -13,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.klr.controller.BaseController;
 import com.klr.util.TokenGenerator;
 
 @Repository
@@ -62,8 +60,6 @@ public class SignupServiceImpl implements RepositoryService {
 	@Override
 	public String checkUserExistance(Map<String, ? extends Object> input) {
 		
-		logger.info("started executing");
-		
 		String sql = "select * from user_login_profile where email = ?";
 		String flag = "FALSE";
 		Connection conn = null;
@@ -78,7 +74,6 @@ public class SignupServiceImpl implements RepositoryService {
 			}
 			rs.close();
 			ps.close();
-			logger.info("flag"+flag);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
