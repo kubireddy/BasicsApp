@@ -13,6 +13,32 @@
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/starter-template.css" />"
 	rel="stylesheet">
+<script type="text/javascript">
+//Below concept to validate sth when user submits the Form, If we return false, it will not be submitted.
+// $(document).ready(function() {
+// 	$('#signUpForm').submit( function() {
+// 		return test;
+//  	}
+//  	);
+// });
+
+//Its an gobal variable and It will be available for all Functions
+var emailIdFlag = false; //false means User has already account.
+function validateUserEmailId(){
+	if(emailIdFlag){
+		return emailIdFlag;
+	} else {
+		alert("existance");
+		return emailIdFlag;
+	} 
+}
+
+//on Register button click, we are validating recapcha and user emailId.
+function validateOnRegister(){
+	return recpchaValidate() && validateUserEmailId();
+}
+
+</script>
 </head>
 <body>
 	<!-- No worries we not need to set the padding or does not need div container bcoz its being called in another JSP -->
@@ -36,7 +62,7 @@
 		<div class="form-group">
 			<label for="signUpEmail">Email*</label> <input type="email"
 				class="form-control" id="signUpEmail" name="signUpEmail"
-				placeholder="Email" onKeyUp="validate();" required>
+				placeholder="Email" onKeyUp="validate();" onkeydown="validateUserExistance();" required>
 			<div>
 				<p id="signUpEmailError" class="small text-center text-danger"></p>
 			</div>
@@ -64,7 +90,7 @@
 			<div class="col-sm-2">
 				<button type="submit" class="btn btn-primary" form="signUpForm"
 					id="signupBurronId" disabled="disabled"
-					onclick="return recpchaValidate();">Register</button>
+					onclick="return validateOnRegister();">Register</button>
 			</div>
 			<div class="col-sm-2">
 				<button class="btn btn-primary" data-dismiss="modal"

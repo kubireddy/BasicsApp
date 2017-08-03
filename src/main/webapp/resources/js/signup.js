@@ -117,7 +117,10 @@ function recpchaValidate(){
 	if(isEmpty(recapcha)){
 		window.alert("Please check the recaptcha");
 		return false;
+	} else{
+		return true;
 	}
+	
 }
 
 function clearOnCancel(){
@@ -130,4 +133,28 @@ function isEmpty(val){
 
 function isNotEmpty(val){
     return (val == undefined || val == null || val.length <= 0 || val == "" || val ==" ") ? false : true;
+}
+
+function validateUserExistance() {
+
+	var mail = $("#signUpEmail").val().toString();
+	$.post("existance", {
+		"EmailId" : mail
+	},
+	function(data, status, jqXHR){ //this will be executed always
+		var statusCode = jqXHR.status.toString();  //gives statusCode
+		responseCallback(data.flag.toString(), status, jqXHR);
+	}
+	);
+}
+
+function responseCallback(flag, status, jqXHR) {
+	//if User is Exist or Service returns Exception, then we should show Alert with oops User has already account, Please Login, 
+	//If you do not have, Please contact the Site.
+	//based on conditions we are assigning new value to emailIdFlag variable.
+	if(flag == "FALSE"){
+		emailIdFlag = true;
+	} else {
+		emailIdFlag = false;
+	}
 }
