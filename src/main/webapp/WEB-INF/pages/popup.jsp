@@ -14,13 +14,6 @@
 <link href="<c:url value="/resources/css/starter-template.css" />"
 	rel="stylesheet">
 <script type="text/javascript">
-//Below concept to validate sth when user submits the Form, If we return false, it will not be submitted.
-// $(document).ready(function() {
-// 	$('#signUpForm').submit( function() {
-// 		return test;
-//  	}
-//  	);
-// });
 
 //Its an gobal variable and It will be available for all Functions
 var emailIdFlag = false; //false means User has already account.
