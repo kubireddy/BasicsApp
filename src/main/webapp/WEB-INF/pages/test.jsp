@@ -17,7 +17,7 @@
     		if ($(this).val() == "ON") {
     			$.post("URL",
     					{
-    						"requestKey": "requestValue";
+    						"requestKey": "requestValue"
     					},
     					function(data, status, jqXHR){ //this will be executed always
     						//if you use this function to read response, we should check for status inside here. 
@@ -53,6 +53,86 @@
 
 			
     </script>
+    <script type="text/javascript">
+	$(document).ready(function() {
+		$("#signupBurronId").click(function() {
+			var mail = $("#signUpEmail").val().toString();
+			console.debug("this is mail"+mail)
+			$.post("existance",
+					{
+						"emailId": mail
+					}
+			).done(function(data, status, jqXHR) { 
+				var statusCode = jqXHR.status.toString();
+				if(data == "TRUE") {
+					$("#signUpFormClose").trigger('click');
+					alert('User has already Account, Please Login'); 
+					return false;
+				} else{
+					return true;
+				}
+				})
+			.fail(function(ex, jqXHR) { 
+				if(!(status == "200")) {
+					$("#signUpFormClose").trigger('click');
+					alert('Please contact the Site, Experiencing SignUp problems'); 
+					return false;
+				}
+				})
+			;
+		});
+	});
+	
+	function validate1() {
+	    
+	    var isSignUpButtonEnable = false;
+	    
+	    var alreadyHasAccount = false;
+	    
+	    alreadyHasAccount = hiValidate();
+	    
+	    isSignUpButtonEnable = existUser(alreadyHasAccount);
+	    
+		return isSignUpButtonEnable;
+	}
+	
+	function existUser(alreadyHasAccount) {
+		if(alreadyHasAccount){
+			document.getElementById("signUpEmailError").innerHTML = "User has already Account, Please Close the SignUp form to Login the Account";
+			return false;
+		} else{
+			document.getElementById("signUpEmailError").innerHTML = "";
+			return true;
+		}
+	}
+	
+	function hiValidate(){
+		
+		var mail = $("#signUpEmail").val().toString();
+		console.debug("this is mail"+mail)
+		$.post("existance",
+				{
+					"EmailId": mail
+				}
+		).done(function(data, status, jqXHR) { 
+			var statusCode = jqXHR.status.toString();
+			
+			if(data.flag.toString() == "TRUE") {
+				//alert("Hi");
+				
+					 //x is local variable and value is 7.
+
+				alert("jwhqdbquygdw");
+				alreadyHasAccount = true;
+				
+				//enable = false;
+				//var statusCode = jqXHR.status.toString(); //it returns StatusCode
+				
+			}
+			});
+		alreadyHasAccount = false;
+		}
+</script>
 </head>
 <body>
 	
