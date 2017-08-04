@@ -15,22 +15,30 @@
 	rel="stylesheet">
 <script type="text/javascript">
 
-//Its an gobal variable and It will be available for all Functions
-var emailIdFlag = false; //false means User has already account.
-function validateUserEmailId(){
-	if(emailIdFlag){
-		return emailIdFlag;
-	} else {
-		alert("existance");
-		return emailIdFlag;
-	} 
-}
+	$(document).ready(function() {
+		$('#emailClose').click(function() {
+			//It closes the Modal When User Clik on Close Button for this Modal becase I removed the modal-dismiss property, If we have here, It will close all 
+			// opened modals.
+			$('#emailModal').modal('hide');
+		});
+	});
+	
+	//Its an gobal variable and It will be available for all Functions
+	var emailIdFlag = false; //false means User has already account.
+	function validateUserEmailId() {
+		if (emailIdFlag) {
+			return emailIdFlag;
+		} else {
+			//It opens the modal Dialog, when User is exist already.
+			$('#emailModal').modal('show');
+			return emailIdFlag;
+		}
+	}
 
-//on Register button click, we are validating recapcha and user emailId.
-function validateOnRegister(){
-	return recpchaValidate() && validateUserEmailId();
-}
-
+	//on Register button click, we are validating recapcha and user emailId.
+	function validateOnRegister() {
+		return recpchaValidate() && validateUserEmailId();
+	}
 </script>
 </head>
 <body>
@@ -95,6 +103,24 @@ function validateOnRegister(){
 			</div>
 		</div>
 	</form>
+	
+	
+	<!--Modal is to display When User trying to SignUp using already SignedUp EmailId-->
+	<div class="modal fade" id="emailModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title">EmailId</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>User has already Account, Please Close the SignUp Form to Login. Please Contact Site, If you do not have already.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" id="emailClose" class="btn btn-default" >Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	<!-- Bootstrap core JavaScript
     ================================================== 
     Placed at the end of the document so-the pages load faster -->
