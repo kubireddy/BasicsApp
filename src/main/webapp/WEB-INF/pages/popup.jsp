@@ -21,6 +21,11 @@
 			// opened modals.
 			$('#emailModal').modal('hide');
 		});
+		$('#recapchaClose').click(function() {
+			//It closes the Modal When User Clik on Close Button for this Modal becase I removed the modal-dismiss property, If we have here, It will close all 
+			// opened modals.
+			$('#recapchaId').modal('hide');
+		});
 	});
 	
 	//Its an gobal variable and It will be available for all Functions
@@ -116,7 +121,24 @@
 	        <p>User has already Account, Please Close the SignUp Form to Login. Please Contact Site, If you do not have already.</p>
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" id="emailClose" class="btn btn-default" >Close</button>
+	        <button type="button" id="emailClose" class="btn btn-primary" >Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!--Modal is to display When User did not check Recapcha.-->
+	<div class="modal fade" id="recapchaId">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title">Recapcha</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Please Check the Box.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" id="recapchaClose" class="btn btn-primary" >Close</button>
 	      </div>
 	    </div>
 	  </div>

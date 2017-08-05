@@ -115,7 +115,7 @@ function pwdMatch(spwd, cpwd){
 function recpchaValidate(){
 	var recapcha = document.getElementById("g-recaptcha-response").value;
 	if(isEmpty(recapcha)){
-		window.alert("Please check the recaptcha");
+		$('#recapchaId').modal('show');
 		return false;
 	} else{
 		return true;
