@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.klr.model.ResendForm;
 import com.klr.model.SignUpForm;
 import com.klr.repositoryAndService.RepositoryService;
 import com.klr.util.TokenGenerator;
@@ -66,7 +67,7 @@ public class BaseController {
 	//This is to match the all Form Fields with Form Backing Bean
 	// value = popup.jsp
 	@RequestMapping(value = "/popup", method = RequestMethod.GET)
-	public ModelAndView homePage() {
+	public ModelAndView signupPage() {
 	   ModelAndView model = new ModelAndView();
 	   model.addObject("signUpForm", new SignUpForm());
 	   model.setViewName("popup");
@@ -101,6 +102,32 @@ public class BaseController {
 		String flag = repositoryService.checkUserExistance(map);
 		response.put("flag", flag);
 		return response;
+	}
+	
+	@RequestMapping(value = "/resend", method = RequestMethod.GET)
+	public ModelAndView resendPage() {
+	   ModelAndView model = new ModelAndView();
+	   model.addObject("ResendForm", new ResendForm());
+	   model.setViewName("signup");
+	   return model;
+	}
+	
+	//here We can read the all Form fields and send it to next Jsp Page.
+	@RequestMapping(value = "/resend", method = RequestMethod.POST)
+	public ModelAndView signup(@ModelAttribute("resendForm") ResendForm resendForm) {
+		ModelAndView model = new ModelAndView();
+		model.addObject("resendForm", resendForm);
+		model.setViewName("signup");
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("EmailId", resendForm.getEmailResend());
+		map.put("token", TokenGenerator.getToken());
+		
+		repositoryService.replaceToken(map);
+		
+		emailSender.sendMail(map);
+		
+		return model;
 	}
 
 }
