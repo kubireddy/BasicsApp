@@ -1,0 +1,25 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- Load the all properties here, So-that Those can be available for below XML files. -->
+<!-- 	<context:property-placeholder -->
+<!--             location="classpath:/properties/application-default.properties, classpath:/properties/application-dev.properties" /> -->
+	<!-- we should give correct path here and also loading env files based on environment-->
+	<context:property-placeholder location="classpath:properties/${environment}.properties"/>
+	
+	<!-- needs to be added with some jakson libraries to handle the Rest WebService calls -->
+	<mvc:annotation-driven/>
+	
+	<import resource="database/datasource.xml" />
+	<import resource="spring/security.xml" />
+	<import resource="spring/service.xml" />
+	
+</beans>

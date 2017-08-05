@@ -4,24 +4,38 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.klr.model.SignUpForm;
+import com.klr.repositoryAndService.RepositoryService;
 
 @Controller
 public class BaseController {
 
 	private static final String HOME_PAGE = "home";
 	private final static org.slf4j.Logger logger = LoggerFactory.getLogger(BaseController.class);
+	
+	private RepositoryService repositoryService;
+	
+	@Autowired
+    public BaseController(@Qualifier("signupServiceImpl") RepositoryService repositoryService){
+          this.repositoryService = repositoryService;
+    }
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String welcome(ModelMap model) {
-		return HOME_PAGE;
+	public ModelAndView welcome() {
+		ModelAndView model1 = new ModelAndView();
+		model1.setViewName("home");
+		return model1;
 	}
 	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
@@ -61,8 +75,19 @@ public class BaseController {
 		map.put("LastName", signUpForm.getLastName());
 		map.put("EmailId", signUpForm.getSignUpEmail());
 		map.put("Password", signUpForm.getSignUpPassword());
+
+		repositoryService.save(map);
 		
 		return model;
+	}
+	
+	@RequestMapping(value = "/existance", method = RequestMethod.POST, produces = "application/json")
+	public @ResponseBody Map<String, String> existence(@RequestParam Map<String, String> map) {
+		
+		Map<String, String> response = new HashMap<String, String>();
+		String flag = repositoryService.checkUserExistance(map);
+		response.put("flag", flag);
+		return response;
 	}
 
 }

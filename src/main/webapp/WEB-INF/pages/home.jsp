@@ -37,7 +37,8 @@
 		</form>
 		<br />
 		<div class="row">
-			<div class="col-sm-2"> <button type="submit" class="btn btn-primary" data-target="#signupModal" data-toggle="modal">Sign Up</button> </div>
+			<!-- added data-backdrop="static" data-keyboard="false" to avoid closing modal, when user clicks on outside modal box.-->
+			<div class="col-sm-2"> <button type="submit" class="btn btn-primary" data-target="#signupModal" data-backdrop="static" data-keyboard="false" data-toggle="modal">Sign Up</button> </div>
 				<div class="modal bg-info" id="signupModal" tabindex="-1">
 					<div class="modal-dialog">
 						<div class="modal-content">
