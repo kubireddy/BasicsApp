@@ -30,6 +30,7 @@
 					<li class="active"><a onclick="window.location = 'home';">Home</a></li>
 					<li><a onclick="window.location = 'about';">About</a></li>
 					<li><a onclick="window.location = 'contact';">Contact Us</a></li>
+					<li><a onclick="window.location = 'signin';">SignIn</a></li>
 				</ul>
 			</div>
 		</div>

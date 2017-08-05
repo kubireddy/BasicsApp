@@ -48,6 +48,11 @@ public class BaseController {
 		return "about";
 	}
 	
+	@RequestMapping(value = "/signin", method = RequestMethod.GET)
+	public String signIn(ModelMap model) {
+		return "signin";
+	}
+	
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
 	public String contact(ModelMap model) {
 		return "contact";
