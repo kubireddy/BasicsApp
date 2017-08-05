@@ -6,5 +6,10 @@
 	<bean id="signupServiceImpl" class="com.klr.repositoryAndService.SignupServiceImpl">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<bean id="emailSenderImpl" class="com.klr.repositoryAndService.EmailSenderImpl">
+		<property name="username" value="${mail.username}" />
+		<property name="password" value="${mail.password}" />
+	</bean>
 
 </beans>

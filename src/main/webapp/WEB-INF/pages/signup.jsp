@@ -69,7 +69,7 @@ function clearOnCancelForResend(){
 		<div class="row">
 			<div class="col-sm-3">
 				<button type="submit" class="btn btn-primary"
-					data-target="#resendModal" data-toggle="modal">Click Me</button>
+					data-target="#resendModal" data-backdrop="static" data-keyboard="false" data-toggle="modal">Click Me</button>
 			</div>
 			<div class="modal bg-info" id="resendModal" tabindex="-1">
 				<div class="modal-dialog">

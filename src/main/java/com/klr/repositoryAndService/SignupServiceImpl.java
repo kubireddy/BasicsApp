@@ -12,8 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.klr.util.TokenGenerator;
-
 @Repository
 @Qualifier("signupServiceImpl") 
 public class SignupServiceImpl implements RepositoryService {
@@ -41,7 +39,7 @@ public class SignupServiceImpl implements RepositoryService {
 			ps.setString(3, input.get("EmailId").toString());
 			ps.setString(4, input.get("Password").toString());
 			ps.setString(5, "N"); //default Value
-			ps.setString(6, TokenGenerator.getToken());
+			ps.setString(6, input.get("token").toString());
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
@@ -75,7 +73,7 @@ public class SignupServiceImpl implements RepositoryService {
 			rs.close();
 			ps.close();
 		} catch (SQLException e) {
-			throw new RuntimeException(e);
+			//Do nothing;
 		} finally {
 			if (conn != null) {
 				try {
@@ -84,6 +82,32 @@ public class SignupServiceImpl implements RepositoryService {
 			}
 		}
 		return flag;
+	}
+
+	@Override
+	public void replaceToken(Map<String, ? extends Object> input) {
+		
+		String sql = "update user_login_profile set token = ? where email = ?;";
+		Connection conn = null;
+
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, input.get("token").toString());
+			ps.setString(2, input.get("EmailId").toString());
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			//Do nothing;
+
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
 	}
 	
 }
