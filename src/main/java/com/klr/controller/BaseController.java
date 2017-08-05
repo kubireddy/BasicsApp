@@ -17,6 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.klr.model.SignUpForm;
 import com.klr.repositoryAndService.RepositoryService;
+import com.klr.util.TokenGenerator;
+import com.klr.repositoryAndService.EmailSender;
+import com.klr.repositoryAndService.EmailSenderImpl;
 
 @Controller
 public class BaseController {
@@ -25,10 +28,12 @@ public class BaseController {
 	private final static org.slf4j.Logger logger = LoggerFactory.getLogger(BaseController.class);
 	
 	private RepositoryService repositoryService;
+	private EmailSender emailSender;
 	
 	@Autowired
-    public BaseController(@Qualifier("signupServiceImpl") RepositoryService repositoryService){
+    public BaseController(@Qualifier("signupServiceImpl") RepositoryService repositoryService, @Qualifier("emailSenderImpl") EmailSender emailSender){
           this.repositoryService = repositoryService;
+          this.emailSender = emailSender;
     }
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -80,8 +85,11 @@ public class BaseController {
 		map.put("LastName", signUpForm.getLastName());
 		map.put("EmailId", signUpForm.getSignUpEmail());
 		map.put("Password", signUpForm.getSignUpPassword());
+		map.put("token", TokenGenerator.getToken());
 
 		repositoryService.save(map);
+		
+		emailSender.sendMail(map);
 		
 		return model;
 	}

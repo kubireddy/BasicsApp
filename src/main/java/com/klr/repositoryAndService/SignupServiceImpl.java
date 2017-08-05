@@ -12,8 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.klr.util.TokenGenerator;
-
 @Repository
 @Qualifier("signupServiceImpl") 
 public class SignupServiceImpl implements RepositoryService {
@@ -41,7 +39,7 @@ public class SignupServiceImpl implements RepositoryService {
 			ps.setString(3, input.get("EmailId").toString());
 			ps.setString(4, input.get("Password").toString());
 			ps.setString(5, "N"); //default Value
-			ps.setString(6, TokenGenerator.getToken());
+			ps.setString(6, input.get("token").toString());
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
