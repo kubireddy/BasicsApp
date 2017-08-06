@@ -124,7 +124,11 @@ public class SignupServiceImpl implements RepositoryService {
 			ps.setString(2, input.get("Password").toString());
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				flag = "TRUE";
+				if(rs.getString("isenabled").equals("Y")) {
+					flag = "TRUE-Y";
+				} else {
+					flag = "TRUE-N";
+				}
 			}
 			rs.close();
 			ps.close();

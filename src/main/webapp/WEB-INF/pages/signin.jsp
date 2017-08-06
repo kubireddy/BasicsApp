@@ -20,13 +20,20 @@ function closeModal() {
 	$('#loginCredsModal').modal('hide');
 }
 
-var loginEmailIdFlag = false; 
+function closeVerifyModal() {
+	$('#verifyCredsModal').modal('hide');
+}
+
+var loginEmailIdFlag = "FALSE"; 
 function validateUserCredentials() {
-	if (loginEmailIdFlag) {
-		return loginEmailIdFlag;
+	if (loginEmailIdFlag == "TRUE-Y") {
+		return true;
+	} else if(loginEmailIdFlag == "TRUE-N") {
+		$('#verifyCredsModal').modal('show');
+		return false;
 	} else {
 		$('#loginCredsModal').modal('show');
-		return loginEmailIdFlag;
+		return false;
 	}
 }
 
@@ -45,10 +52,12 @@ function validateCredentials() {
 }
 
 function responseLoginCallBack(flag, status, jqXHR) {
-	if(flag == "TRUE"){ //valid user
-		loginEmailIdFlag = true;
+	if(flag == "TRUE-Y"){ //valid user
+		loginEmailIdFlag = "TRUE-Y";
+	} else if(flag == "TRUE-N"){
+		loginEmailIdFlag = "TRUE-N";
 	} else {
-		loginEmailIdFlag = false;
+		loginEmailIdFlag = "FALSE";
 	}
 }
 </script>
@@ -108,10 +117,27 @@ function responseLoginCallBack(flag, status, jqXHR) {
 	        <h4 class="modal-title">Login</h4>
 	      </div>
 	      <div class="modal-body">
-	        <p>Please Valid Login Credentials, Please Login, If you do not have Account.</p>
+	        <p>Invalid Credentials, Please Login, If you do not have Account.</p>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" id="loginCredsClose" onclick="closeModal();" class="btn btn-primary" >Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!--Modal is to display When User trying to SignUp using already SignedUp EmailId-->
+	<div class="modal fade" id="verifyCredsModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title">Verification</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Please <a onclick="window.location = 'resend';">Click</a> here to complete the verification</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" id="verifyCredsClose" onclick="closeVerifyModal();" class="btn btn-primary" >Close</button>
 	      </div>
 	    </div>
 	  </div>
