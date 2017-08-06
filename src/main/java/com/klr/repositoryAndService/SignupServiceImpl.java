@@ -109,5 +109,35 @@ public class SignupServiceImpl implements RepositoryService {
 		}
 		
 	}
+
+	@Override
+	public String verify(Map<String, ? extends Object> input) {
+		
+		String sql = "select * from authenticate.user_login_profile where email = ? and password = ?;";
+		String flag = "FALSE";
+		Connection conn = null;
+
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, input.get("EmailId").toString());
+			ps.setString(2, input.get("Password").toString());
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				flag = "TRUE";
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			//Do nothing;
+		} finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return flag;
+	}
 	
 }

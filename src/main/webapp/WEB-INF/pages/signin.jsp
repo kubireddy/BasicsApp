@@ -11,6 +11,48 @@
 <!-- Minified CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
+
+<script type="text/javascript">
+
+function closeModal() {
+	//It closes the Modal When User Clik on Close Button for this Modal becase I removed the modal-dismiss property, If we have here, It will close all 
+	// opened modals.
+	$('#loginCredsModal').modal('hide');
+}
+
+var loginEmailIdFlag = false; 
+function validateUserCredentials() {
+	if (loginEmailIdFlag) {
+		return loginEmailIdFlag;
+	} else {
+		$('#loginCredsModal').modal('show');
+		return loginEmailIdFlag;
+	}
+}
+
+function validateCredentials() {
+	var email= $("#email").val().toString();
+	var pwd = $("#pwd").val().toString();
+	$.post("verifyLogin", {
+		"EmailId" : email , 
+		"Password" : pwd
+	},
+	function(data, status, jqXHR){ //this will be executed always
+		var statusCode = jqXHR.status.toString();  //gives statusCode
+		responseLoginCallBack(data.flag.toString(), status, jqXHR);
+	}
+	);
+}
+
+function responseLoginCallBack(flag, status, jqXHR) {
+	if(flag == "TRUE"){ //valid user
+		loginEmailIdFlag = true;
+	} else {
+		loginEmailIdFlag = false;
+	}
+}
+</script>
+
 </head>
 <body style="background-color:Azure">
 	<%@include file="header.jsp" %>
@@ -21,19 +63,19 @@
     </div>
 
 	<div class="login-template">
-		<form>
+		<form role="form" id="loginForm" action="verify" method="post">
 			<div class="form-group">
 				<label for="email">Email:</label> 
-				<input type="email" class="form-control" id="email" placeholder="Email" required>
+				<input type="email" class="form-control" id="email" name="email" onkeydown="validateCredentials();" onchange="validateCredentials();" placeholder="Email" required>
 			</div>
 			<div class="form-group">
 				<label for="pwd">Password:</label> 
-				<input type="password" class="form-control" id="pwd" placeholder="Password" required>
+				<input type="password" class="form-control" id="pwd" name="pwd" onkeydown="validateCredentials();" onchange="validateCredentials();" placeholder="Password" required>
 			</div>
 			<div class="checkbox">
 				<label><input type="checkbox"> Remember me</label>
 			</div>
-			<button type="submit" class="btn btn-primary">Login</button>
+			<button type="submit" class="btn btn-primary" onformchange="validateCredentials();" onclick="return validateUserCredentials();">Login</button>
 		</form>
 		<br />
 		<div class="row">
@@ -56,6 +98,23 @@
 				</div>
 			<div class="col-sm-2"><strong><p>New to App?</p></div></strong>
 		</div>
+	</div>
+	
+	<!--Modal is to display When User trying to SignUp using already SignedUp EmailId-->
+	<div class="modal fade" id="loginCredsModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title">Login</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Please Valid Login Credentials, Please Login, If you do not have Account.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" id="loginCredsClose" onclick="closeModal();" class="btn btn-primary" >Close</button>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 
 	<%@include file="footer.jsp" %>
