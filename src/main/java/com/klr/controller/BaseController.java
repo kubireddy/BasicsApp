@@ -86,7 +86,7 @@ public class BaseController {
 		map.put("LastName", signUpForm.getLastName());
 		map.put("EmailId", signUpForm.getSignUpEmail());
 		map.put("Password", signUpForm.getSignUpPassword());
-		map.put("token", TokenGenerator.getToken());
+		map.put("token", signUpForm.getSignUpEmail()+"?"+TokenGenerator.getToken());
 
 		repositoryService.save(map);
 		
@@ -128,7 +128,7 @@ public class BaseController {
 		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("EmailId", resendForm.getEmailResend());
-		map.put("token", TokenGenerator.getToken());
+		map.put("token", resendForm.getEmailResend()+"?"+TokenGenerator.getToken());
 		
 		repositoryService.replaceToken(map);
 		
