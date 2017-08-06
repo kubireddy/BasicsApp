@@ -34,9 +34,9 @@ public class SignupServiceImpl implements RepositoryService {
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, input.get("FirstName").toString());
-			ps.setString(2, input.get("LastName").toString());
-			ps.setString(3, input.get("EmailId").toString());
+			ps.setString(1, input.get("FirstName").toString().toUpperCase());
+			ps.setString(2, input.get("LastName").toString().toUpperCase());
+			ps.setString(3, input.get("EmailId").toString().toLowerCase());
 			ps.setString(4, input.get("Password").toString());
 			ps.setString(5, "N"); //default Value
 			ps.setString(6, input.get("token").toString());
@@ -65,7 +65,7 @@ public class SignupServiceImpl implements RepositoryService {
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, input.get("EmailId").toString());
+			ps.setString(1, input.get("EmailId").toString().toLowerCase());
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				flag = "TRUE";
@@ -94,7 +94,7 @@ public class SignupServiceImpl implements RepositoryService {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, input.get("token").toString());
-			ps.setString(2, input.get("EmailId").toString());
+			ps.setString(2, input.get("EmailId").toString().toLowerCase());
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
@@ -120,7 +120,7 @@ public class SignupServiceImpl implements RepositoryService {
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, input.get("EmailId").toString());
+			ps.setString(1, input.get("EmailId").toString().toLowerCase());
 			ps.setString(2, input.get("Password").toString());
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
