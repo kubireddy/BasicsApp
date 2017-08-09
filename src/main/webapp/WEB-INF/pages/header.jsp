@@ -41,10 +41,10 @@
 			</div>
 			<div class="navbar-collapse collapse" id="navbarid">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a style="font: 20px bold arial !important;"  onclick="window.location = 'home';">Home</a></li>
-					<li><a style="font: 20px bold arial !important;" onclick="window.location = 'about';">About</a></li>
-					<li><a style="font: 20px bold arial !important;" onclick="window.location = 'contact';">Contact Us</a></li>
-					<li><a style="font: 20px bold arial !important;" onclick="window.location = 'signin';">SignIn</a></li>
+					<li><a style="background-color: #808080 !important; font: 20px bold arial !important; color: black;"  onclick="window.location = 'home';">Home</a></li>
+					<li><a style="background-color: #808080 !important; font: 20px bold arial !important; color: black;" onclick="window.location = 'about';">About</a></li>
+					<li><a style="background-color: #808080 !important; font: 20px bold arial !important; color: black;" onclick="window.location = 'contact';">Contact Us</a></li>
+					<li><a style="background-color: #808080 !important; font: 20px bold arial !important; color: black;" onclick="window.location = 'signin';">SignIn</a></li>
 				</ul>
 			</div>
 		</div>
