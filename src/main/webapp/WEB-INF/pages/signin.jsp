@@ -66,10 +66,10 @@ function responseLoginCallBack(flag, status, jqXHR) {
 <body style="background-color:Azure">
 	<%@include file="header.jsp" %>
 
-	<div class="starter-template">
-        <h1 class="text-info"><strong>Application Login Info</strong></h1>
-        <p> website. bmscbugfu uhbwegcbewg bcwegcbewu cgecbwieyg cenchc uwhccjci bcgh;qdw0odwk kncheck  kf8f hfgfbigf jfigfkbefigekfk kjfiiwfifhiuhf jhdiweg.</p>
-    </div>
+<!-- 	<div class="starter-template"> -->
+<!--         <h1 class="text-info"><strong>Application Login Info</strong></h1> -->
+<!--         <p> website. bmscbugfu uhbwegcbewg bcwegcbewu cgecbwieyg cenchc uwhccjci bcgh;qdw0odwk kncheck  kf8f hfgfbigf jfigfkbefigekfk kjfiiwfifhiuhf jhdiweg.</p> -->
+<!--     </div> -->
 
 	<div class="login-template">
 		<form role="form" id="loginForm" action="verify" method="post">
