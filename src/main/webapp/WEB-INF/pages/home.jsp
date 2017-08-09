@@ -11,12 +11,26 @@
 <!-- Minified CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"> 
+<style type="text/css">
+ html, body { 
+ 	height: 100%; 
+ 	width: 100%; 
+ } 
+
+ .block1 { 
+ 	height:100%; 
+ 	background-image: url("<c:url value="/resources/images/pic2.jpg" />"); 
+ 	background-position: center center; 
+ 	background-size: cover; 
+ } 
+</style>
 </head>
 <body style="background-color:Azure">
 	<%@include file="header.jsp" %>
-
+	<div class="container-fluid block1">
+	</div>
 	<%@include file="footer.jsp" %>
-
 	<!-- Bootstrap core JavaScript
     ================================================== 
     Placed at the end of the document so-the pages load faster -->

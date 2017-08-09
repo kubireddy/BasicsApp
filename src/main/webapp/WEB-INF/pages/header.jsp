@@ -11,10 +11,24 @@
 <!-- Minified CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
+<style type="text/css">
+.navbar-default {
+    background-color: #FFFFFF !important;
+    border-color: #00FF00 !important;
+}
+.navbar-toggle, .icon-bar {
+    border:1px solid orange !important; 
+    line-height: 50px !important;
+}
+.navbar-fixed-top {
+    height:60px !important;
+    
+}
+</style>
 </head>
 <body>
 	<!-- Fixed navbar which is flexible for Desktop and Phone  -->
-	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarid">
@@ -23,14 +37,14 @@
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Enter Project Name Here</a>
+				<a style="font: 30px bold arial !important;" class="navbar-brand" href="#">Time Tracking System</a>
 			</div>
 			<div class="navbar-collapse collapse" id="navbarid">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a onclick="window.location = 'home';">Home</a></li>
-					<li><a onclick="window.location = 'about';">About</a></li>
-					<li><a onclick="window.location = 'contact';">Contact Us</a></li>
-					<li><a onclick="window.location = 'signin';">SignIn</a></li>
+					<li><a style="font: 20px bold arial !important;"  onclick="window.location = 'home';">Home</a></li>
+					<li><a style="font: 20px bold arial !important;" onclick="window.location = 'about';">About</a></li>
+					<li><a style="font: 20px bold arial !important;" onclick="window.location = 'contact';">Contact Us</a></li>
+					<li><a style="font: 20px bold arial !important;" onclick="window.location = 'signin';">SignIn</a></li>
 				</ul>
 			</div>
 		</div>

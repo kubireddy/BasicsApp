@@ -11,9 +11,15 @@
 <!-- Minified CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
+<style type="text/css">
+.navbar-default {
+    background-color: #FFFFFF !important;
+    border-color: #00FF00 !important;
+}
+</style>
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-bottom"
+	<div class="navbar navbar-default navbar-fixed-bottom"
 		role="navigation">
 		<div class="container">
 			<div class="navbar-text pull-right"> <!-- class="navbar-text pull-left" -->
