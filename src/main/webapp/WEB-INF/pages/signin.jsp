@@ -11,7 +11,12 @@
 <!-- Minified CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
-
+<style type="text/css">
+.conplace {
+	padding-top: 10%;
+	padding-left: 10%;
+}
+</style>
 <script type="text/javascript">
 
 function closeModal() {
@@ -70,8 +75,9 @@ function responseLoginCallBack(flag, status, jqXHR) {
 <!--         <h1 class="text-info"><strong>Application Login Info</strong></h1> -->
 <!--         <p> website. bmscbugfu uhbwegcbewg bcwegcbewu cgecbwieyg cenchc uwhccjci bcgh;qdw0odwk kncheck  kf8f hfgfbigf jfigfkbefigekfk kjfiiwfifhiuhf jhdiweg.</p> -->
 <!--     </div> -->
-
-	<div class="login-template">
+	<div class="container conplace">
+	<div class="row">
+	<div class="container col-lg-6">
 		<form role="form" id="loginForm" action="verify" method="post">
 			<div class="form-group">
 				<label for="email">Email:</label> 
@@ -105,8 +111,10 @@ function responseLoginCallBack(flag, status, jqXHR) {
 						</div>
 					</div>
 				</div>
-			<div class="col-sm-2"><strong><p>New to App?</p></div></strong>
+			<div class="col-sm-2"><strong><p>New to App?</p></strong></div>
 		</div>
+	</div>
+	</div>
 	</div>
 	
 	<!--Modal is to display When User trying to SignUp using already SignedUp EmailId-->
