@@ -39,7 +39,7 @@
 					today</a>
 			</p>
 		</div>
-		<div class="row marketing">
+		<div class="row">
 			<div class="col-lg-6">
 				<h3 style="color: purple;"><strong>Subheading1</strong></h3>
 				<p style="color: Olive;">Donec id elit non mi porta gravida at eget metus. Maecenas
