@@ -206,7 +206,7 @@
 	        <h4 class="modal-title">Recapcha</h4>
 	      </div>
 	      <div class="modal-body">
-	        <p>Please Check the Box.</p>
+	        <p>Please Check the Recapcha.</p>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" id="recapchaClose" class="btn btn-primary" >Close</button>
