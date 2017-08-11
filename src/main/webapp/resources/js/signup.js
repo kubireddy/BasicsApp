@@ -25,9 +25,99 @@ function validate() {
 	}
 }
 
+
+function validateEmployer() {
+    var companyName = document.getElementById("companyName").value;
+    var companyId = document.getElementById("companyId").value;
+    var passcode = document.getElementById("passcode").value;
+    var cPasscode = document.getElementById("cPasscode").value;
+    var isSignUpEmployerButtonEnable = false;
+	
+    isSignUpEmployerButtonEnable = checkCompanyNameRegex(companyName);
+	
+    isSignUpEmployerButtonEnable = isSignUpEmployerButtonEnable && checkCompanyIdRegex(companyId);
+    
+    isSignUpEmployerButtonEnable = isSignUpEmployerButtonEnable && checkPasscodeRegex(passcode);
+    
+    isSignUpEmployerButtonEnable = isSignUpEmployerButtonEnable && passcodeMatch(passcode, cPasscode);
+    
+	if(isSignUpEmployerButtonEnable) {
+		$("#signUpEmployerButtonId").attr("disabled",false);
+	} else{
+		$("#signUpEmployerButtonId").attr("disabled",true);
+	}
+}
+
+function passcodeMatch(passcode, cPasscode){
+	if(passcode === cPasscode) {
+		document.getElementById("cPasscodeError").innerHTML = "";
+		return true;
+	} else if(isEmpty(passcode) && isNotEmpty(cPasscode)){
+		document.getElementById("cPasscodeError").innerHTML = "Please Enter Password First";
+		return false;
+	} else if (!(passcode == cPasscode) && !isEmpty(cPasscode)){
+		document.getElementById("cPasscodeError").innerHTML = "Passwords are not Matched";
+		return false;
+	} else if(isEmpty(cPasscode)){
+		document.getElementById("cPasscodeError").innerHTML = "";
+		return false;
+	}	
+}
+
+function checkPasscodeRegex(passcode) {
+	
+	var regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+	
+	if (regex.test(passcode)) {
+		document.getElementById("passcodeError").innerHTML = "";
+		return true;
+	} else if(isEmpty(passcode)){
+		document.getElementById("passcodeError").innerHTML = "";
+		return false;
+	}
+	else{
+		document.getElementById("passcodeError").innerHTML = "Must have one Lower/Upper/Numeric/SplChar";
+		return false;
+	}
+}
+
+function checkCompanyIdRegex(companyId) {
+	
+	var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	
+	if (regex.test(companyId)) {
+		document.getElementById("companyIdError").innerHTML = "";
+		return true;
+	} else if(isEmpty(companyId)){
+		document.getElementById("companyIdError").innerHTML = "";
+		return false;
+	}
+	else{
+		document.getElementById("companyIdError").innerHTML = "Enter Valid EmailId";
+		return false;
+	}
+}
+
+function checkCompanyNameRegex(companyName) {
+	
+	var regex = new RegExp("^([a-zA-Z ]{6,20})$");
+	
+	if (regex.test(companyName)) {
+		document.getElementById("companyNameError").innerHTML = "";
+		return true;
+	} else if(isEmpty(companyName)){
+		document.getElementById("companyNameError").innerHTML = "";
+		return false;
+	}
+	else{
+		document.getElementById("companyNameError").innerHTML = "Enter Valid Name";
+		return false;
+	}
+}
+
 function checkFirstNameRegex(firstName) {
 	
-	var regex = new RegExp("^([A-Z ]{2,20})$");
+	var regex = new RegExp("^([a-zA-Z ]{2,20})$");
 	
 	if (regex.test(firstName)) {
 		document.getElementById("firstNameError").innerHTML = "";
@@ -37,14 +127,14 @@ function checkFirstNameRegex(firstName) {
 		return false;
 	}
 	else{
-		document.getElementById("firstNameError").innerHTML = "Enter Valid Name(Caps alphabet only)";
+		document.getElementById("firstNameError").innerHTML = "Enter Valid Name";
 		return false;
 	}
 }
 
 function checkLastNameRegex(lastName) {
 	
-	var regex = new RegExp("^([A-Z ]{2,20})$");
+	var regex = new RegExp("^([a-zA-Z ]{2,20})$");
 	
 	if (regex.test(lastName)) {
 		document.getElementById("lastNameError").innerHTML = "";
@@ -54,7 +144,7 @@ function checkLastNameRegex(lastName) {
 		return false;
 	}
 	else{
-		document.getElementById("lastNameError").innerHTML = "Enter Valid Name(Caps alphabet only)";
+		document.getElementById("lastNameError").innerHTML = "Enter Valid Name";
 		return false;
 	}
 }
@@ -106,10 +196,7 @@ function pwdMatch(spwd, cpwd){
 	} else if(isEmpty(cpwd)){
 		document.getElementById("cpwdError").innerHTML = "";
 		return false;
-	}
-	
-	
-	
+	}	
 }
 
 function recpchaValidate(){
@@ -125,6 +212,10 @@ function recpchaValidate(){
 
 function clearOnCancel(){
 	document.getElementById("signUpForm").reset();
+}
+
+function clearOnCancelEmployer(){
+	document.getElementById("employerSignUpForm").reset();
 }
 
 function isEmpty(val){

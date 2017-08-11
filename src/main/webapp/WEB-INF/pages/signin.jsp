@@ -18,6 +18,21 @@
 }
 </style>
 <script type="text/javascript">
+function selectForm() {
+	$("#" + $('#selection').val()).show().siblings().hide();
+}
+
+function setSelectVal() {
+	$("#" + $('#selection').val()).hide(); //hide the current Form
+	document.getElementById("selectionForm").reset(); //to reset the selection form 
+	$('#selectionForm').show(); //to show selection tag when user Reopen.
+}
+
+function clearSelectionOnSignUpClick() {
+	document.getElementById("selectionForm").reset(); //to reset the selection form, when user comes back on browser
+	document.getElementById("signUpForm").reset();
+	document.getElementById("employerSignUpForm").reset();
+}
 
 function closeModal() {
 	//It closes the Modal When User Clik on Close Button for this Modal becase I removed the modal-dismiss property, If we have here, It will close all 
@@ -95,18 +110,26 @@ function responseLoginCallBack(flag, status, jqXHR) {
 		<br />
 		<div class="row">
 			<!-- added data-backdrop="static" data-keyboard="false" to avoid closing modal, when user clicks on outside modal box.-->
-			<div class="col-sm-2"> <button type="submit" class="btn btn-primary" data-target="#signupModal" data-backdrop="static" data-keyboard="false" data-toggle="modal">Sign Up</button> </div>
+			<div class="col-sm-2"> <button type="submit" class="btn btn-primary" data-target="#signupModal" onclick="clearSelectionOnSignUpClick();" data-backdrop="static" data-keyboard="false" data-toggle="modal">Sign Up</button> </div>
 				<div class="modal bg-info" id="signupModal" tabindex="-1">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header=" style="background-color:LightCyan">
-								<button class="close" data-dismiss="modal" onclick="clearOnCancel(); validate();">&times;</button>
+								<button class="close" data-dismiss="modal" onclick="setSelectVal(); clearOnCancel(); validate(); clearOnCancelEmployer(); validateEmployer();">&times;</button>
 								<h2 class="modal-title text-center text-primary"><strong>Registration</strong></h2>
 								<br>
 								<h6 class="text-center"><strong>Please fill all required (*) fields</strong></h6>
 							</div>
 							<div class="modal-body" style="background-color:LightCyan">
-								<%@include file="popup.jsp" %>
+									<form role="form" id="selectionForm" name="selectionForm">
+										<label for="selection">SignUp By :</label> <select
+											id="selection" onkeyup="selectForm();" onchange="selectForm();">
+											<option value="" selected>---Please Select---</option>
+											<option value="signUpForm">Employee</option>
+											<option value="employerSignUpForm">Employer</option>
+										</select>
+									</form>
+									<%@include file="popup.jsp" %>
 							</div>
 						</div>
 					</div>
@@ -125,7 +148,7 @@ function responseLoginCallBack(flag, status, jqXHR) {
 	        <h4 class="modal-title">Login</h4>
 	      </div>
 	      <div class="modal-body">
-	        <p>Invalid Credentials, Please Login, If you do not have Account.</p>
+	        <p>Invalid Credentials. Please SignUp, If you do not have Account.</p>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" id="loginCredsClose" onclick="closeModal();" class="btn btn-primary" >Close</button>

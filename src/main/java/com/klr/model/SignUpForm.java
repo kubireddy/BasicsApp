@@ -6,6 +6,7 @@ public class SignUpForm {
 	private String lastName;
 	private String signUpEmail;
 	private String signUpPassword;
+	private String employerIdentity;
 	public String getFirstName() {
 		return firstName;
 	}
@@ -29,6 +30,12 @@ public class SignUpForm {
 	}
 	public void setSignUpPassword(String signUpPassword) {
 		this.signUpPassword = signUpPassword;
+	}
+	public String getEmployerIdentity() {
+		return employerIdentity;
+	}
+	public void setEmployerIdentity(String employerIdentity) {
+		this.employerIdentity = employerIdentity;
 	}
 	
 }
