@@ -26,6 +26,9 @@
 			// opened modals.
 			$('#recapchaId').modal('hide');
 		});
+		$('#termsClose').click(function() {
+			$('#termsModal').modal('hide');
+		});
 	});
 	
 	//Its an gobal variable and It will be available for all Functions
@@ -60,7 +63,7 @@
 		  if(check) {
 			  return check;
 		  } else {
-			  alert("check");
+			  $('#termsModal').modal('show');
 			  return check;
 		  }
 	  }
@@ -210,6 +213,23 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" id="recapchaClose" class="btn btn-primary" >Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!--Modal is to display When User did not terms & conditions.-->
+	<div class="modal fade" id="termsModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title">Terms & Conditions</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Please Check the box to agree.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" id="termsClose" class="btn btn-primary" >Close</button>
 	      </div>
 	    </div>
 	  </div>

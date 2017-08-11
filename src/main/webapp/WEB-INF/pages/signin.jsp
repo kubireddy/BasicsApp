@@ -28,6 +28,12 @@ function setSelectVal() {
 	$('#selectionForm').show(); //to show selection tag when user Reopen.
 }
 
+function clearSelectionOnSignUpClick() {
+	document.getElementById("selectionForm").reset(); //to reset the selection form, when user comes back on browser
+	document.getElementById("signUpForm").reset();
+	document.getElementById("employerSignUpForm").reset();
+}
+
 function closeModal() {
 	//It closes the Modal When User Clik on Close Button for this Modal becase I removed the modal-dismiss property, If we have here, It will close all 
 	// opened modals.
@@ -104,7 +110,7 @@ function responseLoginCallBack(flag, status, jqXHR) {
 		<br />
 		<div class="row">
 			<!-- added data-backdrop="static" data-keyboard="false" to avoid closing modal, when user clicks on outside modal box.-->
-			<div class="col-sm-2"> <button type="submit" class="btn btn-primary" data-target="#signupModal" data-backdrop="static" data-keyboard="false" data-toggle="modal">Sign Up</button> </div>
+			<div class="col-sm-2"> <button type="submit" class="btn btn-primary" data-target="#signupModal" onclick="clearSelectionOnSignUpClick();" data-backdrop="static" data-keyboard="false" data-toggle="modal">Sign Up</button> </div>
 				<div class="modal bg-info" id="signupModal" tabindex="-1">
 					<div class="modal-dialog">
 						<div class="modal-content">
