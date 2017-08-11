@@ -148,7 +148,7 @@ function responseLoginCallBack(flag, status, jqXHR) {
 	        <h4 class="modal-title">Login</h4>
 	      </div>
 	      <div class="modal-body">
-	        <p>Invalid Credentials, Please Login, If you do not have Account.</p>
+	        <p>Invalid Credentials. Please SignUp, If you do not have Account.</p>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" id="loginCredsClose" onclick="closeModal();" class="btn btn-primary" >Close</button>
