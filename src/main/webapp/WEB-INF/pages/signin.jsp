@@ -18,6 +18,15 @@
 }
 </style>
 <script type="text/javascript">
+function selectForm() {
+	$("#" + $('#selection').val()).show().siblings().hide();
+}
+
+function setSelectVal() {
+	$("#" + $('#selection').val()).hide(); //hide the current Form
+	document.getElementById("selectionForm").reset(); //to reset the selection form 
+	$('#selectionForm').show(); //to show selection tag when user Reopen.
+}
 
 function closeModal() {
 	//It closes the Modal When User Clik on Close Button for this Modal becase I removed the modal-dismiss property, If we have here, It will close all 
@@ -100,13 +109,21 @@ function responseLoginCallBack(flag, status, jqXHR) {
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header=" style="background-color:LightCyan">
-								<button class="close" data-dismiss="modal" onclick="clearOnCancel(); validate();">&times;</button>
+								<button class="close" data-dismiss="modal" onclick="setSelectVal(); clearOnCancel(); validate(); clearOnCancelEmployer(); validateEmployer();">&times;</button>
 								<h2 class="modal-title text-center text-primary"><strong>Registration</strong></h2>
 								<br>
 								<h6 class="text-center"><strong>Please fill all required (*) fields</strong></h6>
 							</div>
 							<div class="modal-body" style="background-color:LightCyan">
-								<%@include file="popup.jsp" %>
+									<form role="form" id="selectionForm" name="selectionForm">
+										<label for="selection">SignUp By :</label> <select
+											id="selection" onkeyup="selectForm();" onchange="selectForm();">
+											<option value="" selected>---Please Select---</option>
+											<option value="signUpForm">Employee</option>
+											<option value="employerSignUpForm">Employer</option>
+										</select>
+									</form>
+									<%@include file="popup.jsp" %>
 							</div>
 						</div>
 					</div>

@@ -48,7 +48,7 @@
 </head>
 <body>
 	<!-- No worries we not need to set the padding or does not need div container bcoz its being called in another JSP -->
-	<form role="form" id="signUpForm" action="signup" method="post">
+	<form role="form" id="signUpForm" action="signup" method="post" style="display:none">
 		<div class="form-group">
 			<label for="firstName">First Name*</label> <input type="text"
 				class="form-control" id="firstName" name="firstName"
@@ -100,11 +100,60 @@
 			</div>
 			<div class="col-sm-2">
 				<button class="btn btn-primary" data-dismiss="modal"
-					form="signUpForm" onclick="clearOnCancel(); validate();">Close</button>
+					form="signUpForm" onclick="setSelectVal(); clearOnCancel(); validate();">Close</button>
 			</div>
 			<div class="col-sm-2">
 				<button class="btn btn-danger" type="reset" form="signUpForm"
 					onclick="clearOnCancel(); validate();">Reset</button>
+			</div>
+		</div>
+	</form>
+	
+	
+	
+	<form role="form" id="employerSignUpForm" name="employerSignUpForm" action="employerSignup" method="post" style="display:none">
+		<div class="form-group">
+			<label for="companyName">Company Name*</label> <input type="text"
+				class="form-control" id="companyName" name="companyName"
+				placeholder="Company Name" onkeyup="validateEmployer();" required>
+			<div>
+				<p id="companyNameError" class="small font-weight-bold text-center text-danger"></p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="companyId">Company Id*</label> <input type="email"
+				class="form-control" id="companyId" name="companyId"
+				placeholder="Email Id" onKeyUp="validateEmployer();" required>
+			<div>
+				<p id="companyIdError" class="small text-center text-danger"></p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="passcode">Passcode*</label> <input type="password"
+				class="form-control" id="passcode" name="passcode"
+				placeholder="Password" onKeyUp="validateEmployer();" required>
+			<div>
+				<p id="passcodeError" class="small text-center text-danger"></p>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="cPasscode">Conform Passcode*</label> <input type="password"
+				class="form-control" id="cPasscode" placeholder="Reenter Password"
+				onKeyUp="validateEmployer();" required>
+			<div>
+				<p id="cPasscodeError" class="small text-center text-danger"></p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-primary" id="signUpEmployerButtonId" form="employerSignUpForm">Register</button>
+			</div>
+			<div class="col-sm-2">
+				<button class="btn btn-primary" data-dismiss="modal"
+					form="employerSignUpForm" onclick="setSelectVal(); clearOnCancelEmployer(); validateEmployer();">Close</button>
+			</div>
+			<div class="col-sm-2">
+				<button class="btn btn-danger" type="reset" onclick="clearOnCancelEmployer(); validateEmployer();" form="employerSignUpForm">Reset</button>
 			</div>
 		</div>
 	</form>
