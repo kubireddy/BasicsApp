@@ -42,6 +42,17 @@
 			return emailIdFlag;
 		}
 	}
+	
+	var emailIdFlagEmployer = false; //false means User has already account.
+	function validateEmployerEmailId() {
+		if (emailIdFlagEmployer) {
+			return emailIdFlagEmployer;
+		} else {
+			//It opens the modal Dialog, when User is exist already.
+			$('#emailModal').modal('show');
+			return emailIdFlagEmployer;
+		}
+	}
 
 	//on Register button click, we are validating recapcha and user emailId.
 	function validateOnRegister() {
@@ -67,6 +78,10 @@
 			  return check;
 		  }
 	  }
+	
+	function validateOnRegisterEmployer() {
+		return activateButton() && validateEmployerEmailId();
+	}
 </script>
 </head>
 <body>
@@ -151,7 +166,7 @@
 		<div class="form-group">
 			<label for="companyId">Company Id*</label> <input type="email"
 				class="form-control" id="companyId" name="companyId"
-				placeholder="Email Id" onKeyUp="validateEmployer();" required>
+				placeholder="Email Id" onKeyUp="validateEmployer();" onkeydown="validateEmployerExistance();" required>
 			<div>
 				<p id="companyIdError" class="small text-center text-danger"></p>
 			</div>
@@ -176,7 +191,7 @@
 		<br>
 		<div class="row">
 			<div class="col-sm-2">
-				<button type="submit" class="btn btn-primary" onclick="return activateButton();" id="signUpEmployerButtonId" form="employerSignUpForm">Register</button>
+				<button type="submit" class="btn btn-primary" onclick="return validateOnRegisterEmployer();" id="signUpEmployerButtonId" form="employerSignUpForm">Register</button>
 			</div>
 			<div class="col-sm-2">
 				<button class="btn btn-primary" data-dismiss="modal"
