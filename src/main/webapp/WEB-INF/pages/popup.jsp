@@ -212,7 +212,7 @@
 	        <h4 class="modal-title">EmailId</h4>
 	      </div>
 	      <div class="modal-body">
-	        <p>User has already Account, Please Close the SignUp Form to Login. Please Contact Site, If you do not have already.</p>
+	        <p>Account is already Exist, Please Close the SignUp Form to Login. Please Contact Site, If you do not have already.</p>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" id="emailClose" class="btn btn-primary" >Close</button>
