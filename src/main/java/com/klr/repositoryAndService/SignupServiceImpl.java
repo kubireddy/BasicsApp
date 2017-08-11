@@ -28,7 +28,7 @@ public class SignupServiceImpl implements RepositoryService {
 	public void save(Map<String, ? extends Object> input) {
 		
 		String sql = "insert into user_login_profile " +
-				"(firstname, lastname, email, password, isenabled, token) VALUES (?, ?, ?, ?, ?, ?)";
+				"(firstname, lastname, companyname, email, password, isenabled, token, isemployer, employernumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		Connection conn = null;
 
 		try {
@@ -36,10 +36,13 @@ public class SignupServiceImpl implements RepositoryService {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, input.get("FirstName").toString().toUpperCase());
 			ps.setString(2, input.get("LastName").toString().toUpperCase());
-			ps.setString(3, input.get("EmailId").toString().toLowerCase());
-			ps.setString(4, input.get("Password").toString());
-			ps.setString(5, "N"); //default Value
-			ps.setString(6, input.get("token").toString());
+			ps.setString(3, input.get("CompanyName").toString().toUpperCase());
+			ps.setString(4, input.get("EmailId").toString().toLowerCase());
+			ps.setString(5, input.get("Password").toString());
+			ps.setString(6, "N"); //default Value
+			ps.setString(7, input.get("token").toString());
+			ps.setString(8, input.get("isEmployer").toString());
+			ps.setString(9, input.get("EmployerNumber").toString());
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {

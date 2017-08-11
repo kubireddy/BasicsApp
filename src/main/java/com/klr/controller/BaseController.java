@@ -87,6 +87,9 @@ public class BaseController {
 		map.put("EmailId", signUpForm.getSignUpEmail());
 		map.put("Password", signUpForm.getSignUpPassword());
 		map.put("token", signUpForm.getSignUpEmail()+"?"+TokenGenerator.getToken());
+		map.put("EmployerNumber", signUpForm.getEmployerIdentity());
+		map.put("CompanyName", "NULL"); // for user
+		map.put("isEmployer", "N"); // for user
 
 		repositoryService.save(map);
 		
