@@ -100,7 +100,7 @@ function checkCompanyIdRegex(companyId) {
 
 function checkCompanyNameRegex(companyName) {
 	
-	var regex = new RegExp("^([a-zA-Z ]{2,20})$");
+	var regex = new RegExp("^([a-zA-Z ]{6,20})$");
 	
 	if (regex.test(companyName)) {
 		document.getElementById("companyNameError").innerHTML = "";

@@ -42,7 +42,7 @@ public class SignupServiceImpl implements RepositoryService {
 			ps.setString(6, "N"); //default Value
 			ps.setString(7, input.get("token").toString());
 			ps.setString(8, input.get("isEmployer").toString());
-			ps.setString(9, input.get("EmployerNumber").toString());
+			ps.setString(9, input.get("EmployerNumber").toString().toUpperCase());
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.klr.model.EmployerSignUpForm;
 import com.klr.model.ResendForm;
 import com.klr.model.SignUpForm;
 import com.klr.repositoryAndService.RepositoryService;
@@ -70,6 +71,7 @@ public class BaseController {
 	public ModelAndView signupPage() {
 	   ModelAndView model = new ModelAndView();
 	   model.addObject("signUpForm", new SignUpForm());
+	   model.addObject("employerSignUpForm", new EmployerSignUpForm());
 	   model.setViewName("popup");
 	   return model;
 	}
@@ -97,6 +99,40 @@ public class BaseController {
 		
 		return model;
 	}
+	
+	//start
+//	@RequestMapping(value = "/popup", method = RequestMethod.GET)
+//	public ModelAndView signupEmployerPage() {
+//	   ModelAndView model = new ModelAndView();
+//	   model.addObject("employerSignUpForm", new EmployerSignUpForm());
+//	   model.setViewName("popup");
+//	   return model;
+//	}
+	
+	//here We can read the all Form fields and send it to next Jsp Page.
+	@RequestMapping(value = "/employerSignup", method = RequestMethod.POST)
+	public ModelAndView signupEmployer(@ModelAttribute("employerSignUpForm") EmployerSignUpForm employerSignUpForm) {
+		ModelAndView model = new ModelAndView();
+		model.addObject("employerSignUpForm", employerSignUpForm);
+		model.setViewName("signup");
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("FirstName", "NULL"); // for employer
+		map.put("LastName", "NULL"); // for employer
+		map.put("EmailId", employerSignUpForm.getCompanyId());
+		map.put("Password", employerSignUpForm.getPasscode());
+		map.put("token", employerSignUpForm.getCompanyId()+"?"+TokenGenerator.getToken());
+		map.put("EmployerNumber", employerSignUpForm.getCompanyName().substring(0, 5)+TokenGenerator.getToken().substring(0, 5)); //we have to generate employer number
+		map.put("CompanyName", employerSignUpForm.getCompanyName()); 
+		map.put("isEmployer", "Y"); // for employer
+
+		repositoryService.save(map);
+		
+		emailSender.sendMail(map);
+		
+		return model;
+	}
+	//end
 	
 	@RequestMapping(value = "/existance", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody Map<String, String> existence(@RequestParam Map<String, String> map) {
