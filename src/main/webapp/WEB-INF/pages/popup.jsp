@@ -112,6 +112,11 @@
 				<p id="cpwdError" class="small text-center text-danger"></p>
 			</div>
 		</div>
+		<div class="form-group">
+			<label for="employerIdentity">Employer Identity*</label> <input type="text"
+				class="form-control" id="employerIdentity" name="employerIdentity"
+				placeholder="Enter Employer Id" required>
+		</div>
 		<div class="g-recaptcha"
 			data-sitekey="6Ld0LikUAAAAAFTY5TOCkpgo0tM6mRHSrs5yXK5D"></div>
 		<br>
