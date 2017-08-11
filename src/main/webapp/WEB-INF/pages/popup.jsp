@@ -44,6 +44,26 @@
 	function validateOnRegister() {
 		return recpchaValidate() && validateUserEmailId();
 	}
+	
+	var check = false;
+	function checkBox() {
+		var element = document.getElementById("terms").value;
+	      if(element == "on") {
+	        	check = true;
+	       }
+	       else  {
+	       		check = false;
+	      }
+	}
+	
+	function activateButton() {
+		  if(check) {
+			  return check;
+		  } else {
+			  alert("check");
+			  return check;
+		  }
+	  }
 </script>
 </head>
 <body>
@@ -144,9 +164,11 @@
 				<p id="cPasscodeError" class="small text-center text-danger"></p>
 			</div>
 		</div>
+		<div><input type="checkbox" name="terms" id="terms" onchange="checkBox();">  I Agree Terms & Coditions</div>
+		<br>
 		<div class="row">
 			<div class="col-sm-2">
-				<button type="submit" class="btn btn-primary" id="signUpEmployerButtonId" form="employerSignUpForm">Register</button>
+				<button type="submit" class="btn btn-primary" onclick="return activateButton();" id="signUpEmployerButtonId" form="employerSignUpForm">Register</button>
 			</div>
 			<div class="col-sm-2">
 				<button class="btn btn-primary" data-dismiss="modal"
