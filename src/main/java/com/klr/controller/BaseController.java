@@ -86,7 +86,7 @@ public class BaseController {
 		map.put("LastName", signUpForm.getLastName());
 		map.put("EmailId", signUpForm.getSignUpEmail());
 		map.put("Password", signUpForm.getSignUpPassword());
-		map.put("token", TokenGenerator.getToken());
+		map.put("token", signUpForm.getSignUpEmail()+"?"+TokenGenerator.getToken());
 
 		repositoryService.save(map);
 		
@@ -97,9 +97,16 @@ public class BaseController {
 	
 	@RequestMapping(value = "/existance", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody Map<String, String> existence(@RequestParam Map<String, String> map) {
-		
 		Map<String, String> response = new HashMap<String, String>();
 		String flag = repositoryService.checkUserExistance(map);
+		response.put("flag", flag);
+		return response;
+	}
+	
+	@RequestMapping(value = "/verifyLogin", method = RequestMethod.POST, produces = "application/json")
+	public @ResponseBody Map<String, String> verifyLogin(@RequestParam Map<String, String> map) {
+		Map<String, String> response = new HashMap<String, String>();
+		String flag = repositoryService.verify(map);
 		response.put("flag", flag);
 		return response;
 	}
@@ -121,7 +128,7 @@ public class BaseController {
 		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("EmailId", resendForm.getEmailResend());
-		map.put("token", TokenGenerator.getToken());
+		map.put("token", resendForm.getEmailResend()+"?"+TokenGenerator.getToken());
 		
 		repositoryService.replaceToken(map);
 		

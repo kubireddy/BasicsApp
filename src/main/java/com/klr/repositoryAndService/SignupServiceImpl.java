@@ -34,9 +34,9 @@ public class SignupServiceImpl implements RepositoryService {
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, input.get("FirstName").toString());
-			ps.setString(2, input.get("LastName").toString());
-			ps.setString(3, input.get("EmailId").toString());
+			ps.setString(1, input.get("FirstName").toString().toUpperCase());
+			ps.setString(2, input.get("LastName").toString().toUpperCase());
+			ps.setString(3, input.get("EmailId").toString().toLowerCase());
 			ps.setString(4, input.get("Password").toString());
 			ps.setString(5, "N"); //default Value
 			ps.setString(6, input.get("token").toString());
@@ -65,7 +65,7 @@ public class SignupServiceImpl implements RepositoryService {
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, input.get("EmailId").toString());
+			ps.setString(1, input.get("EmailId").toString().toLowerCase());
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				flag = "TRUE";
@@ -94,7 +94,7 @@ public class SignupServiceImpl implements RepositoryService {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, input.get("token").toString());
-			ps.setString(2, input.get("EmailId").toString());
+			ps.setString(2, input.get("EmailId").toString().toLowerCase());
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
@@ -108,6 +108,40 @@ public class SignupServiceImpl implements RepositoryService {
 			}
 		}
 		
+	}
+
+	@Override
+	public String verify(Map<String, ? extends Object> input) {
+		
+		String sql = "select * from authenticate.user_login_profile where email = ? and password = ?;";
+		String flag = "FALSE";
+		Connection conn = null;
+
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, input.get("EmailId").toString().toLowerCase());
+			ps.setString(2, input.get("Password").toString());
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				if(rs.getString("isenabled").equals("Y")) {
+					flag = "TRUE-Y";
+				} else {
+					flag = "TRUE-N";
+				}
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			//Do nothing;
+		} finally {
+			if (conn != null) {
+				try {
+				conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+		return flag;
 	}
 	
 }

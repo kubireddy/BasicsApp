@@ -11,29 +11,86 @@
 <!-- Minified CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
+<style type="text/css">
+.conplace {
+	padding-top: 10%;
+	padding-left: 10%;
+}
+</style>
+<script type="text/javascript">
+
+function closeModal() {
+	//It closes the Modal When User Clik on Close Button for this Modal becase I removed the modal-dismiss property, If we have here, It will close all 
+	// opened modals.
+	$('#loginCredsModal').modal('hide');
+}
+
+function closeVerifyModal() {
+	$('#verifyCredsModal').modal('hide');
+}
+
+var loginEmailIdFlag = "FALSE"; 
+function validateUserCredentials() {
+	if (loginEmailIdFlag == "TRUE-Y") {
+		return true;
+	} else if(loginEmailIdFlag == "TRUE-N") {
+		$('#verifyCredsModal').modal('show');
+		return false;
+	} else {
+		$('#loginCredsModal').modal('show');
+		return false;
+	}
+}
+
+function validateCredentials() {
+	var email= $("#email").val().toString();
+	var pwd = $("#pwd").val().toString();
+	$.post("verifyLogin", {
+		"EmailId" : email , 
+		"Password" : pwd
+	},
+	function(data, status, jqXHR){ //this will be executed always
+		var statusCode = jqXHR.status.toString();  //gives statusCode
+		responseLoginCallBack(data.flag.toString(), status, jqXHR);
+	}
+	);
+}
+
+function responseLoginCallBack(flag, status, jqXHR) {
+	if(flag == "TRUE-Y"){ //valid user
+		loginEmailIdFlag = "TRUE-Y";
+	} else if(flag == "TRUE-N"){
+		loginEmailIdFlag = "TRUE-N";
+	} else {
+		loginEmailIdFlag = "FALSE";
+	}
+}
+</script>
+
 </head>
 <body style="background-color:Azure">
 	<%@include file="header.jsp" %>
 
-	<div class="starter-template">
-        <h1 class="text-info"><strong>Application Login Info</strong></h1>
-        <p> website. bmscbugfu uhbwegcbewg bcwegcbewu cgecbwieyg cenchc uwhccjci bcgh;qdw0odwk kncheck  kf8f hfgfbigf jfigfkbefigekfk kjfiiwfifhiuhf jhdiweg.</p>
-    </div>
-
-	<div class="login-template">
-		<form>
+<!-- 	<div class="starter-template"> -->
+<!--         <h1 class="text-info"><strong>Application Login Info</strong></h1> -->
+<!--         <p> website. bmscbugfu uhbwegcbewg bcwegcbewu cgecbwieyg cenchc uwhccjci bcgh;qdw0odwk kncheck  kf8f hfgfbigf jfigfkbefigekfk kjfiiwfifhiuhf jhdiweg.</p> -->
+<!--     </div> -->
+	<div class="container conplace">
+	<div class="row">
+	<div class="container col-lg-6">
+		<form role="form" id="loginForm" action="verify" method="post">
 			<div class="form-group">
 				<label for="email">Email:</label> 
-				<input type="email" class="form-control" id="email" placeholder="Email" required>
+				<input type="email" class="form-control" id="email" name="email" onkeydown="validateCredentials();" onchange="validateCredentials();" placeholder="Email" required>
 			</div>
 			<div class="form-group">
 				<label for="pwd">Password:</label> 
-				<input type="password" class="form-control" id="pwd" placeholder="Password" required>
+				<input type="password" class="form-control" id="pwd" name="pwd" onkeydown="validateCredentials();" onchange="validateCredentials();" placeholder="Password" required>
 			</div>
 			<div class="checkbox">
 				<label><input type="checkbox"> Remember me</label>
 			</div>
-			<button type="submit" class="btn btn-primary">Login</button>
+			<button type="submit" class="btn btn-primary" onformchange="validateCredentials();" onclick="return validateUserCredentials();">Login</button>
 		</form>
 		<br />
 		<div class="row">
@@ -54,8 +111,44 @@
 						</div>
 					</div>
 				</div>
-			<div class="col-sm-2"><strong><p>New to App?</p></div></strong>
+			<div class="col-sm-2"><strong><p>New to App?</p></strong></div>
 		</div>
+	</div>
+	</div>
+	</div>
+	
+	<!--Modal is to display When User trying to SignUp using already SignedUp EmailId-->
+	<div class="modal fade" id="loginCredsModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title">Login</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Invalid Credentials, Please Login, If you do not have Account.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" id="loginCredsClose" onclick="closeModal();" class="btn btn-primary" >Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!--Modal is to display When User trying to SignUp using already SignedUp EmailId-->
+	<div class="modal fade" id="verifyCredsModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title">Verification</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Please <a onclick="window.location = 'resend';">Click</a> here to complete the verification</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" id="verifyCredsClose" onclick="closeVerifyModal();" class="btn btn-primary" >Close</button>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 
 	<%@include file="footer.jsp" %>
