@@ -210,7 +210,6 @@ public class BaseController {
 		model.addObject("verificationForm", verificationForm);
 		model.setViewName("signin");
 		
-		//String emailId = verificationForm.getVerificationToken().subSequence(0, verificationForm.getVerificationToken().length()-9).toString();
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("token", verificationForm.getVerificationToken());
 		repositoryService.updateEnableFlag(map);
