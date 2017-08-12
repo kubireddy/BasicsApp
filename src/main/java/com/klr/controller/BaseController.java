@@ -82,7 +82,7 @@ public class BaseController {
 	}
 	
 	//here We can read the all Form fields and send it to next Jsp Page.
-	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	@RequestMapping(value = "/userSignup", method = RequestMethod.POST)
 	public ModelAndView signup(@ModelAttribute("signUpForm") SignUpForm signUpForm) {
 		ModelAndView model = new ModelAndView();
 		model.addObject("signUpForm", signUpForm);
@@ -194,6 +194,14 @@ public class BaseController {
 		model.addObject("loginForm", loginForm);
 		model.setViewName("loginView");
 		return model;
+	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public ModelAndView signupPage1() {
+	   ModelAndView model = new ModelAndView();
+	   model.addObject("verificationForm", new VerificationForm());
+	   model.setViewName("signup");
+	   return model;
 	}
 	
 	@RequestMapping(value = "/success", method = RequestMethod.POST)

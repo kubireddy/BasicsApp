@@ -99,7 +99,7 @@
 </head>
 <body>
 	<!-- No worries we not need to set the padding or does not need div container bcoz its being called in another JSP -->
-	<form role="form" id="signUpForm" action="signup" method="post" style="display:none">
+	<form role="form" id="signUpForm" action="userSignup" method="post" style="display:none">
 		<div class="form-group">
 			<label for="employerIdentity">Employer Identity*</label> <input type="text"
 				class="form-control" id="employerIdentity" name="employerIdentity"
