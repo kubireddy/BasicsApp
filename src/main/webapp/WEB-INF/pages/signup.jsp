@@ -127,7 +127,7 @@ function clearOnCancelForResend(){
 			<p class="small text-info">Please verify the Verification Token Which was sent to your Mail</p>
 		</div>
 		<br>
-		<form role="form" id="verificationForm" action="success" method="post">
+		<form role="form" id="verificationForm" name="verificationForm" action="success" method="post">
 			<div class="form-group">
 				<label for="verificationToken">Verification Token*</label> <input
 					type="text" class="form-control" id="verificationToken"

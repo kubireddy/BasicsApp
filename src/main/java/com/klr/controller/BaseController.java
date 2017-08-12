@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.klr.model.EmployerSignUpForm;
+import com.klr.model.LoginForm;
 import com.klr.model.ResendForm;
 import com.klr.model.SignUpForm;
 import com.klr.repositoryAndService.RepositoryService;
+import com.klr.repositoryAndService.VerificationForm;
 import com.klr.util.TokenGenerator;
 import com.klr.repositoryAndService.EmailSender;
 import com.klr.repositoryAndService.EmailSenderImpl;
@@ -56,8 +58,11 @@ public class BaseController {
 	}
 	
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
-	public String signIn(ModelMap model) {
-		return "signin";
+	public ModelAndView signIn() {
+		ModelAndView model = new ModelAndView();
+		model.addObject("loginForm", new LoginForm());
+		model.setViewName("signin");
+		return model;
 	}
 	
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
@@ -99,15 +104,6 @@ public class BaseController {
 		
 		return model;
 	}
-	
-	//start
-//	@RequestMapping(value = "/popup", method = RequestMethod.GET)
-//	public ModelAndView signupEmployerPage() {
-//	   ModelAndView model = new ModelAndView();
-//	   model.addObject("employerSignUpForm", new EmployerSignUpForm());
-//	   model.setViewName("popup");
-//	   return model;
-//	}
 	
 	//here We can read the all Form fields and send it to next Jsp Page.
 	@RequestMapping(value = "/employerSignup", method = RequestMethod.POST)
@@ -189,6 +185,22 @@ public class BaseController {
 		
 		emailSender.sendMail(map);
 		
+		return model;
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ModelAndView signup(@ModelAttribute("loginForm") LoginForm loginForm) {
+		ModelAndView model = new ModelAndView();
+		model.addObject("loginForm", loginForm);
+		model.setViewName("loginView");
+		return model;
+	}
+	
+	@RequestMapping(value = "/success", method = RequestMethod.POST)
+	public ModelAndView signup(@ModelAttribute("verificationForm") VerificationForm verificationForm) {
+		ModelAndView model = new ModelAndView();
+		model.addObject("verificationForm", verificationForm);
+		model.setViewName("loginView");
 		return model;
 	}
 

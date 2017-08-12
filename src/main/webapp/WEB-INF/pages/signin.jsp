@@ -93,7 +93,7 @@ function responseLoginCallBack(flag, status, jqXHR) {
 	<div class="container conplace">
 	<div class="row">
 	<div class="container col-lg-6">
-		<form role="form" id="loginForm" action="verify" method="post">
+		<form role="form" id="loginForm" name="loginForm" action="login" method="post">
 			<div class="form-group">
 				<label for="email">Email:</label> 
 				<input type="email" class="form-control" id="email" name="email" onkeydown="validateCredentials();" onchange="validateCredentials();" placeholder="Email" required>
