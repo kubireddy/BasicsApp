@@ -209,6 +209,10 @@ public class BaseController {
 		ModelAndView model = new ModelAndView();
 		model.addObject("verificationForm", verificationForm);
 		model.setViewName("loginView");
+		
+		String emailId = verificationForm.getVerificationToken().subSequence(0, verificationForm.getVerificationToken().length()-9).toString();
+		repositoryService.updateEnableFlag(emailId);
+		
 		return model;
 	}
 

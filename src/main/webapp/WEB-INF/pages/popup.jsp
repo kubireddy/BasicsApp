@@ -178,7 +178,7 @@
 		</div>
 		<!-- verifying mail on onKeyUP and KeyDown to trigger the Copy Paste Scenario. -->
 		<div class="form-group"> 
-			<label for="companyId">Company Id*</label> <input type="email"
+			<label for="companyId">Company Email Id*</label> <input type="email"
 				class="form-control" id="companyId" name="companyId"
 				placeholder="Email Id" onKeyUp="validateEmployer(); validateEmployerExistance();" onkeydown="validateEmployerExistance();" required>
 			<div>
