@@ -249,3 +249,48 @@ function responseCallback(flag, status, jqXHR) {
 		emailIdFlag = false;
 	}
 }
+
+function validateEmployerExistance() {
+
+	var mail = $("#companyId").val().toString();
+	$.post("existance", {
+		"EmailId" : mail
+	},
+	function(data, status, jqXHR){ //this will be executed always
+		var statusCode = jqXHR.status.toString();  //gives statusCode
+		responseCallbackEmployer(data.flag.toString(), status, jqXHR);
+	}
+	);
+}
+
+function responseCallbackEmployer(flag, status, jqXHR) {
+	//if User is Exist or Service returns Exception, then we should show Alert with oops User has already account, Please Login, 
+	//If you do not have, Please contact the Site.
+	//based on conditions we are assigning new value to emailIdFlag variable.
+	if(flag == "FALSE"){
+		emailIdFlagEmployer = true;
+	} else {
+		emailIdFlagEmployer = false;
+	}
+}
+
+function verifyEmployerId() {
+
+	var number = $("#employerIdentity").val().toString();
+	$.post("employer", {
+		"EmployerNumber" : number
+	},
+	function(data, status, jqXHR){ //this will be executed always
+		var statusCode = jqXHR.status.toString();  //gives statusCode
+		responseCallbackEmployerNumber(data.flag.toString(), status, jqXHR);
+	}
+	);
+}
+
+function responseCallbackEmployerNumber(flag, status, jqXHR) {
+	if(flag == "TRUE"){
+		emailIdFlagEmployerNumber = true;
+	} else {
+		emailIdFlagEmployerNumber = false;
+	}
+}
