@@ -273,3 +273,24 @@ function responseCallbackEmployer(flag, status, jqXHR) {
 		emailIdFlagEmployer = false;
 	}
 }
+
+function verifyEmployerId() {
+
+	var number = $("#employerIdentity").val().toString();
+	$.post("employer", {
+		"EmployerNumber" : number
+	},
+	function(data, status, jqXHR){ //this will be executed always
+		var statusCode = jqXHR.status.toString();  //gives statusCode
+		responseCallbackEmployerNumber(data.flag.toString(), status, jqXHR);
+	}
+	);
+}
+
+function responseCallbackEmployerNumber(flag, status, jqXHR) {
+	if(flag == "TRUE"){
+		emailIdFlagEmployerNumber = true;
+	} else {
+		emailIdFlagEmployerNumber = false;
+	}
+}

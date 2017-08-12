@@ -29,6 +29,9 @@
 		$('#termsClose').click(function() {
 			$('#termsModal').modal('hide');
 		});
+		$('#employerNumberClose').click(function() {
+			$('#employerNumberModal').modal('hide');
+		});
 	});
 	
 	//Its an gobal variable and It will be available for all Functions
@@ -40,6 +43,16 @@
 			//It opens the modal Dialog, when User is exist already.
 			$('#emailModal').modal('show');
 			return emailIdFlag;
+		}
+	}
+	
+	var emailIdFlagEmployerNumber = false; //false means User has already account.
+	function validateEmployerNumber() {
+		if (emailIdFlagEmployerNumber) {
+			return emailIdFlagEmployerNumber;
+		} else {
+			$('#employerNumberModal').modal('show');
+			return emailIdFlagEmployerNumber;
 		}
 	}
 	
@@ -56,7 +69,7 @@
 
 	//on Register button click, we are validating recapcha and user emailId.
 	function validateOnRegister() {
-		return recpchaValidate() && validateUserEmailId();
+		return recpchaValidate() && validateUserEmailId() && validateEmployerNumber();
 	}
 	
 	var check = false;
@@ -88,6 +101,11 @@
 	<!-- No worries we not need to set the padding or does not need div container bcoz its being called in another JSP -->
 	<form role="form" id="signUpForm" action="signup" method="post" style="display:none">
 		<div class="form-group">
+			<label for="employerIdentity">Employer Identity*</label> <input type="text"
+				class="form-control" id="employerIdentity" name="employerIdentity"
+				placeholder="Enter Employer Id" onkeyup="verifyEmployerId();" onkeydown="verifyEmployerId();" required>
+		</div>
+		<div class="form-group">
 			<label for="firstName">First Name*</label> <input type="text"
 				class="form-control" id="firstName" name="firstName"
 				placeholder="First Name" onKeyUp="validate();" required>
@@ -106,7 +124,7 @@
 		<div class="form-group">
 			<label for="signUpEmail">Email*</label> <input type="email"
 				class="form-control" id="signUpEmail" name="signUpEmail"
-				placeholder="Email" onKeyUp="validate();" onkeydown="validateUserExistance();" required>
+				placeholder="Email" onKeyUp="validate(); validateUserExistance();" onkeydown="validateUserExistance();" required>
 			<div>
 				<p id="signUpEmailError" class="small text-center text-danger"></p>
 			</div>
@@ -126,11 +144,6 @@
 			<div>
 				<p id="cpwdError" class="small text-center text-danger"></p>
 			</div>
-		</div>
-		<div class="form-group">
-			<label for="employerIdentity">Employer Identity*</label> <input type="text"
-				class="form-control" id="employerIdentity" name="employerIdentity"
-				placeholder="Enter Employer Id" required>
 		</div>
 		<div class="g-recaptcha"
 			data-sitekey="6Ld0LikUAAAAAFTY5TOCkpgo0tM6mRHSrs5yXK5D"></div>
@@ -163,10 +176,11 @@
 				<p id="companyNameError" class="small font-weight-bold text-center text-danger"></p>
 			</div>
 		</div>
-		<div class="form-group">
+		<!-- verifying mail on onKeyUP and KeyDown to trigger the Copy Paste Scenario. -->
+		<div class="form-group"> 
 			<label for="companyId">Company Id*</label> <input type="email"
 				class="form-control" id="companyId" name="companyId"
-				placeholder="Email Id" onKeyUp="validateEmployer();" onkeydown="validateEmployerExistance();" required>
+				placeholder="Email Id" onKeyUp="validateEmployer(); validateEmployerExistance();" onkeydown="validateEmployerExistance();" required>
 			<div>
 				<p id="companyIdError" class="small text-center text-danger"></p>
 			</div>
@@ -250,6 +264,22 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" id="termsClose" class="btn btn-primary" >Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="modal fade" id="employerNumberModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title">Employer Number</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Please Enter Valid Employer Identity</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" id="employerNumberClose" class="btn btn-primary" >Close</button>
 	      </div>
 	    </div>
 	  </div>
