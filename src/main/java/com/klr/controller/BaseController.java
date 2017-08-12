@@ -93,7 +93,7 @@ public class BaseController {
 		map.put("LastName", signUpForm.getLastName());
 		map.put("EmailId", signUpForm.getSignUpEmail());
 		map.put("Password", signUpForm.getSignUpPassword());
-		map.put("token", signUpForm.getSignUpEmail()+"?"+TokenGenerator.getToken());
+		map.put("token", TokenGenerator.getToken());
 		map.put("EmployerNumber", signUpForm.getEmployerIdentity());
 		map.put("CompanyName", "NULL"); // for user
 		map.put("isEmployer", "N"); // for user
@@ -117,7 +117,7 @@ public class BaseController {
 		map.put("LastName", "NULL"); // for employer
 		map.put("EmailId", employerSignUpForm.getCompanyId());
 		map.put("Password", employerSignUpForm.getPasscode());
-		map.put("token", employerSignUpForm.getCompanyId()+"?"+TokenGenerator.getToken());
+		map.put("token", TokenGenerator.getToken());
 		map.put("EmployerNumber", employerSignUpForm.getCompanyName().substring(0, 5)+TokenGenerator.getToken().substring(0, 5)); //we have to generate employer number
 		map.put("CompanyName", employerSignUpForm.getCompanyName()); 
 		map.put("isEmployer", "Y"); // for employer
@@ -179,7 +179,7 @@ public class BaseController {
 		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("EmailId", resendForm.getEmailResend());
-		map.put("token", resendForm.getEmailResend()+"?"+TokenGenerator.getToken());
+		map.put("token", TokenGenerator.getToken());
 		
 		repositoryService.replaceToken(map);
 		
@@ -208,10 +208,12 @@ public class BaseController {
 	public ModelAndView signup(@ModelAttribute("verificationForm") VerificationForm verificationForm) {
 		ModelAndView model = new ModelAndView();
 		model.addObject("verificationForm", verificationForm);
-		model.setViewName("loginView");
+		model.setViewName("signin");
 		
-		String emailId = verificationForm.getVerificationToken().subSequence(0, verificationForm.getVerificationToken().length()-9).toString();
-		repositoryService.updateEnableFlag(emailId);
+		//String emailId = verificationForm.getVerificationToken().subSequence(0, verificationForm.getVerificationToken().length()-9).toString();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("token", verificationForm.getVerificationToken());
+		repositoryService.updateEnableFlag(map);
 		
 		return model;
 	}

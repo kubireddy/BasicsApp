@@ -6,6 +6,6 @@ public class TokenGenerator {
 	
 	//returns the random token with 8 digit alphabet.
 	public static String getToken() {
-		return UUID.randomUUID().toString().substring(0, 8);
+		return UUID.randomUUID().toString();
 	}
 }

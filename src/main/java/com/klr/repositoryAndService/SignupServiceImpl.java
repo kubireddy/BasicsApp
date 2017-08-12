@@ -206,16 +206,16 @@ public class SignupServiceImpl implements RepositoryService {
 	}
 
 	@Override
-	public void updateEnableFlag(String input) {
+	public void updateEnableFlag(Map<String, ? extends Object> input) {
 		
-		String sql = "update user_login_profile set isenabled = ? where email = ?;";
+		String sql = "update user_login_profile set isenabled = ? where token = ?;";
 		Connection conn = null;
 
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, "Y");
-			ps.setString(2, input.toLowerCase());
+			ps.setString(2, input.get("token").toString());
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {
