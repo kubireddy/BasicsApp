@@ -72,6 +72,40 @@ function responseResendCallBack(flag, status, jqXHR) {
 	}
 }
 
+var tokenFlag = false; 
+function tokenValidator() {
+	if (tokenFlag) {
+		return tokenFlag;
+	} else {
+		$('#tokenModal').modal('show');
+		return tokenFlag;
+	}
+}
+
+function validateToken() {
+	var token = $("#verificationToken").val().toString();
+	$.post("verifyToken", {
+		"token" : token
+	},
+	function(data, status, jqXHR){ //this will be executed always
+		var statusCode = jqXHR.status.toString();  //gives statusCode
+		responseResendCallBackToken(data.flag.toString(), status, jqXHR);
+	}
+	);
+}
+
+function responseResendCallBackToken(flag, status, jqXHR) {
+	if(flag == "TRUE"){
+		tokenFlag = true;
+	} else {
+		tokenFlag = false;
+	}
+}
+
+function closeTokenButton() {
+	$('#tokenModal').modal('hide');
+}
+
 function clearOnCancelForResend(){
 	document.getElementById("resendForm").reset();
 }
@@ -93,16 +127,16 @@ function clearOnCancelForResend(){
 			<p class="small text-info">Please verify the Verification Token Which was sent to your Mail</p>
 		</div>
 		<br>
-		<form role="form" id="verificationForm" action="verifyToken" method="post">
+		<form role="form" id="verificationForm" action="success" method="post">
 			<div class="form-group">
 				<label for="verificationToken">Verification Token*</label> <input
 					type="text" class="form-control" id="verificationToken"
-					name="verificationToken" placeholder="Token" required>
+					name="verificationToken" placeholder="Token" onkeyup="validateToken();" onkeydown="validateToken();" required>
 			</div>
 			<div class="row">
 				<div class="col-sm-2">
 					<button type="submit" class="btn btn-primary"
-						form="verificationForm">Verify</button>
+						form="verificationForm" onclick="return tokenValidator();">Verify</button>
 				</div>
 			</div>
 		</form>
@@ -162,6 +196,22 @@ function clearOnCancelForResend(){
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" id="resendEmailClose" onclick="closeButton();" class="btn btn-primary" >Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="modal fade" id="tokenModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title">Token</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>Invalid Token.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" id="tokenClose" onclick="closeTokenButton();" class="btn btn-primary" >Close</button>
 	      </div>
 	    </div>
 	  </div>

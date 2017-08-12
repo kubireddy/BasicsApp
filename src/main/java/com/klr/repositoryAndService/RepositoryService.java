@@ -8,4 +8,5 @@ public interface RepositoryService {
 	public void replaceToken(Map<String, ? extends Object> input);
 	public String verify(Map<String, ? extends Object> input);
 	public String checkEmployerId(Map<String, ? extends Object> input);
+	public String verifyToken(Map<String, ? extends Object> input);
 }

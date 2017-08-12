@@ -144,9 +144,16 @@ public class BaseController {
 	
 	@RequestMapping(value = "/employer", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody Map<String, String> verifyEmployerId(@RequestParam Map<String, String> map) {
-		logger.info("XXXXXXXXXXXXXXX"+map.get("EmployerNumber").toString());
 		Map<String, String> response = new HashMap<String, String>();
 		String flag = repositoryService.checkEmployerId(map);
+		response.put("flag", flag);
+		return response;
+	}
+	
+	@RequestMapping(value = "/verifyToken", method = RequestMethod.POST, produces = "application/json")
+	public @ResponseBody Map<String, String> tokenVerification(@RequestParam Map<String, String> map) {
+		Map<String, String> response = new HashMap<String, String>();
+		String flag = repositoryService.verifyToken(map);
 		response.put("flag", flag);
 		return response;
 	}
