@@ -164,14 +164,10 @@ function clearOnCancelForResend(){
 								</div>
 								<br>
 								<div class="row">
-									<div class="col-sm-2">
 										<button type="submit" class="btn btn-primary"
 											form="resendForm" onclick="return validateUserResendEmailId();">Resend</button>
-									</div>
-									<div class="col-sm-2">
 										<button class="btn btn-primary" data-dismiss="modal" onclick="clearOnCancelForResend();"
 											form="resendForm">Close</button>
-									</div>
 								</div>
 							</form>
 						</div>
