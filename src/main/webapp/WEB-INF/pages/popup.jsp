@@ -149,19 +149,13 @@
 			data-sitekey="6Ld0LikUAAAAAFTY5TOCkpgo0tM6mRHSrs5yXK5D"></div>
 		<br>
 		<div class="row">
-			<div class="col-sm-2">
 				<button type="submit" class="btn btn-primary" form="signUpForm"
 					id="signupBurronId" disabled="disabled"
 					onclick="return validateOnRegister();">Register</button>
-			</div>
-			<div class="col-sm-2">
 				<button class="btn btn-primary" data-dismiss="modal"
 					form="signUpForm" onclick="setSelectVal(); clearOnCancel(); validate();">Close</button>
-			</div>
-			<div class="col-sm-2">
 				<button class="btn btn-danger" type="reset" form="signUpForm"
 					onclick="clearOnCancel(); validate();">Reset</button>
-			</div>
 		</div>
 	</form>
 	
@@ -204,16 +198,10 @@
 		<div><input type="checkbox" name="terms" id="terms" onchange="checkBox();">  I Agree Terms & Coditions</div>
 		<br>
 		<div class="row">
-			<div class="col-sm-2">
 				<button type="submit" class="btn btn-primary" onclick="return validateOnRegisterEmployer();" id="signUpEmployerButtonId" form="employerSignUpForm">Register</button>
-			</div>
-			<div class="col-sm-2">
 				<button class="btn btn-primary" data-dismiss="modal"
 					form="employerSignUpForm" onclick="setSelectVal(); clearOnCancelEmployer(); validateEmployer();">Close</button>
-			</div>
-			<div class="col-sm-2">
 				<button class="btn btn-danger" type="reset" onclick="clearOnCancelEmployer(); validateEmployer();" form="employerSignUpForm">Reset</button>
-			</div>
 		</div>
 	</form>
 	
