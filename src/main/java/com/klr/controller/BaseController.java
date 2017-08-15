@@ -70,6 +70,11 @@ public class BaseController {
 		return "contact";
 	}
 	
+	@RequestMapping(value = "/pageNotFound", method = RequestMethod.GET)
+	public String errorJsp(ModelMap model) {
+		return "pageNotFound";
+	}
+	
 	//This is to match the all Form Fields with Form Backing Bean
 	// value = popup.jsp
 	@RequestMapping(value = "/popup", method = RequestMethod.GET)
