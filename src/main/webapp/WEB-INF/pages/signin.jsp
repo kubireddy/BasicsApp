@@ -13,7 +13,7 @@
 <link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
 <style type="text/css">
 .divpad {
-	padding-top: 5%;
+	padding-top: 10%;
 }
 </style>
 <script type="text/javascript">
