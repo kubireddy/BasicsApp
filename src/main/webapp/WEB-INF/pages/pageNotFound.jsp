@@ -8,27 +8,32 @@
 <meta name="description" content="XXXXX">
 <meta name="author" content="Linga Reddy Kubireddy">
 <title>Home</title>
-<!-- Minified CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
 <style type="text/css">
-.navbar-default {
-    background-color: #FFFFFF !important;
-    border-color: #00FF00 !important;
+.divCenter {
+	position: absolute;
+	margin: auto;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	width: 400px;
+	height: 300px;
+	background-color: #ccc;
+	border-radius: 3px;
 }
 </style>
 </head>
-<body>
-	<div class="navbar navbar-default navbar-fixed-bottom"
-		role="navigation">
-		<div class="container">
-			<div class="navbar-text pull-left"> <!-- class="navbar-text pull-left" -->
-				<p>Contact: </p>
-				<p>Phone Number: </p>
-			</div>
-			<div class="navbar-text pull-right"> <!-- class="navbar-text pull-left" -->
-				<p>2017 CopyRights.Inc</p>
-			</div>
+<body style="background-color:Azure">
+	
+	<div class="divCenter">
+		<br><br>
+		<div class="row">
+			<h4 class="text-center text-danger">RESOURCE NOT FOUND</h4>
+		</div> <br>
+		<div class="row" style="padding-left: 25%;">
+			<h6>Requested Resource is not available or found <br>Please <a onclick="window.location = 'home';">Click Me</a> to go to Home Page.</h6>
 		</div>
 	</div>
 

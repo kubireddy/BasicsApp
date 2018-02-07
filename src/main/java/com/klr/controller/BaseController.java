@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.klr.model.EmployerSignUpForm;
+import com.klr.model.LoginForm;
 import com.klr.model.ResendForm;
 import com.klr.model.SignUpForm;
 import com.klr.repositoryAndService.RepositoryService;
+import com.klr.repositoryAndService.VerificationForm;
 import com.klr.util.TokenGenerator;
 import com.klr.repositoryAndService.EmailSender;
 import com.klr.repositoryAndService.EmailSenderImpl;
@@ -56,13 +58,21 @@ public class BaseController {
 	}
 	
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
-	public String signIn(ModelMap model) {
-		return "signin";
+	public ModelAndView signIn() {
+		ModelAndView model = new ModelAndView();
+		model.addObject("loginForm", new LoginForm());
+		model.setViewName("signin");
+		return model;
 	}
 	
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
 	public String contact(ModelMap model) {
 		return "contact";
+	}
+	
+	@RequestMapping(value = "/pageNotFound", method = RequestMethod.GET)
+	public String errorJsp(ModelMap model) {
+		return "pageNotFound";
 	}
 	
 	//This is to match the all Form Fields with Form Backing Bean
@@ -77,7 +87,7 @@ public class BaseController {
 	}
 	
 	//here We can read the all Form fields and send it to next Jsp Page.
-	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	@RequestMapping(value = "/userSignup", method = RequestMethod.POST)
 	public ModelAndView signup(@ModelAttribute("signUpForm") SignUpForm signUpForm) {
 		ModelAndView model = new ModelAndView();
 		model.addObject("signUpForm", signUpForm);
@@ -88,7 +98,7 @@ public class BaseController {
 		map.put("LastName", signUpForm.getLastName());
 		map.put("EmailId", signUpForm.getSignUpEmail());
 		map.put("Password", signUpForm.getSignUpPassword());
-		map.put("token", signUpForm.getSignUpEmail()+"?"+TokenGenerator.getToken());
+		map.put("token", TokenGenerator.getToken());
 		map.put("EmployerNumber", signUpForm.getEmployerIdentity());
 		map.put("CompanyName", "NULL"); // for user
 		map.put("isEmployer", "N"); // for user
@@ -99,15 +109,6 @@ public class BaseController {
 		
 		return model;
 	}
-	
-	//start
-//	@RequestMapping(value = "/popup", method = RequestMethod.GET)
-//	public ModelAndView signupEmployerPage() {
-//	   ModelAndView model = new ModelAndView();
-//	   model.addObject("employerSignUpForm", new EmployerSignUpForm());
-//	   model.setViewName("popup");
-//	   return model;
-//	}
 	
 	//here We can read the all Form fields and send it to next Jsp Page.
 	@RequestMapping(value = "/employerSignup", method = RequestMethod.POST)
@@ -121,7 +122,7 @@ public class BaseController {
 		map.put("LastName", "NULL"); // for employer
 		map.put("EmailId", employerSignUpForm.getCompanyId());
 		map.put("Password", employerSignUpForm.getPasscode());
-		map.put("token", employerSignUpForm.getCompanyId()+"?"+TokenGenerator.getToken());
+		map.put("token", TokenGenerator.getToken());
 		map.put("EmployerNumber", employerSignUpForm.getCompanyName().substring(0, 5)+TokenGenerator.getToken().substring(0, 5)); //we have to generate employer number
 		map.put("CompanyName", employerSignUpForm.getCompanyName()); 
 		map.put("isEmployer", "Y"); // for employer
@@ -183,11 +184,40 @@ public class BaseController {
 		
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("EmailId", resendForm.getEmailResend());
-		map.put("token", resendForm.getEmailResend()+"?"+TokenGenerator.getToken());
+		map.put("token", TokenGenerator.getToken());
 		
 		repositoryService.replaceToken(map);
 		
 		emailSender.sendMail(map);
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ModelAndView signup(@ModelAttribute("loginForm") LoginForm loginForm) {
+		ModelAndView model = new ModelAndView();
+		model.addObject("loginForm", loginForm);
+		model.setViewName("loginView");
+		return model;
+	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public ModelAndView signupPage1() {
+	   ModelAndView model = new ModelAndView();
+	   model.addObject("verificationForm", new VerificationForm());
+	   model.setViewName("signup");
+	   return model;
+	}
+	
+	@RequestMapping(value = "/success", method = RequestMethod.POST)
+	public ModelAndView signup(@ModelAttribute("verificationForm") VerificationForm verificationForm) {
+		ModelAndView model = new ModelAndView();
+		model.addObject("verificationForm", verificationForm);
+		model.setViewName("signin");
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("token", verificationForm.getVerificationToken());
+		repositoryService.updateEnableFlag(map);
 		
 		return model;
 	}

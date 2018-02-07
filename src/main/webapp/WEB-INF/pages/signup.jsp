@@ -14,18 +14,8 @@
 <link href="<c:url value="/resources/css/starter-template.css" />"
 	rel="stylesheet">
 <style type="text/css">
-div.sign {
-	padding-top: 10%;
-	padding-left: 5%;
-	padding-right: 50%;
-	text-align: left;
-}
-
-div.resend {
-	padding-top: 2%;
-	padding-left: 5%;
-	padding-right: 50%;
-	text-align: left;
+.divpad {
+	padding-top: 12%;
 }
 </style>
 
@@ -122,12 +112,15 @@ function clearOnCancelForResend(){
 		</div>
 	</div>
 	<br>
-	<div class="sign">
+	<div class="container divpad">
+	<div  class="container col-lg-3"></div>
+	<div  class="container col-lg-6">
+	<div class="row">
 		<div>
-			<p class="small text-info">Please verify the Verification Token Which was sent to your Mail</p>
+			<p class="small text-primary">Please verify the Verification Token Which was sent to your Mail</p>
 		</div>
 		<br>
-		<form role="form" id="verificationForm" action="success" method="post">
+		<form role="form" id="verificationForm" name="verificationForm" action="success" method="post">
 			<div class="form-group">
 				<label for="verificationToken">Verification Token*</label> <input
 					type="text" class="form-control" id="verificationToken"
@@ -141,13 +134,10 @@ function clearOnCancelForResend(){
 			</div>
 		</form>
 	</div>
-
-	<div class="resend">
-		<div class="row">
-			<div class="col-sm-3">
-				<button type="submit" class="btn btn-primary"
+	<br>
+	<div class="row">
+			<button type="submit" class="btn btn-primary"
 					data-target="#resendModal" data-backdrop="static" data-keyboard="false" data-toggle="modal">Click Me</button>
-			</div>
 			<div class="modal bg-info" id="resendModal" tabindex="-1">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -164,24 +154,20 @@ function clearOnCancelForResend(){
 								</div>
 								<br>
 								<div class="row">
-									<div class="col-sm-2">
 										<button type="submit" class="btn btn-primary"
 											form="resendForm" onclick="return validateUserResendEmailId();">Resend</button>
-									</div>
-									<div class="col-sm-2">
 										<button class="btn btn-primary" data-dismiss="modal" onclick="clearOnCancelForResend();"
 											form="resendForm">Close</button>
-									</div>
 								</div>
 							</form>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-4">
 				<p><strong>Have not Received the Verification Code?</strong></p>
-			</div>
 		</div>
+	</div>
+	<div  class="container col-lg-3"></div>
 	</div>
 	
 	<!--Modal is to display When User trying to SignUp using already SignedUp EmailId-->

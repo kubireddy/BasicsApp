@@ -29,4 +29,12 @@
                    org.springframework.web.context.ContextLoaderListener
                 </listener-class>
 	</listener>
+	<error-page>
+    	<error-code>405</error-code>
+    	<location>/pageNotFound</location>
+	</error-page>
+	<error-page>
+    	<error-code>404</error-code>
+    	<location>/pageNotFound</location>
+	</error-page>
 </web-app>

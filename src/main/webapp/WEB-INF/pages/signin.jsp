@@ -12,9 +12,8 @@
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/starter-template.css" />" rel="stylesheet">
 <style type="text/css">
-.conplace {
+.divpad {
 	padding-top: 10%;
-	padding-left: 10%;
 }
 </style>
 <script type="text/javascript">
@@ -90,10 +89,11 @@ function responseLoginCallBack(flag, status, jqXHR) {
 <!--         <h1 class="text-info"><strong>Application Login Info</strong></h1> -->
 <!--         <p> website. bmscbugfu uhbwegcbewg bcwegcbewu cgecbwieyg cenchc uwhccjci bcgh;qdw0odwk kncheck  kf8f hfgfbigf jfigfkbefigekfk kjfiiwfifhiuhf jhdiweg.</p> -->
 <!--     </div> -->
-	<div class="container conplace">
+	<div class="container divpad">
 	<div class="row">
+	<div  class="container col-lg-3"></div>
 	<div class="container col-lg-6">
-		<form role="form" id="loginForm" action="verify" method="post">
+		<form role="form" id="loginForm" name="loginForm" action="login" method="post">
 			<div class="form-group">
 				<label for="email">Email:</label> 
 				<input type="email" class="form-control" id="email" name="email" onkeydown="validateCredentials();" onchange="validateCredentials();" placeholder="Email" required>
@@ -108,9 +108,9 @@ function responseLoginCallBack(flag, status, jqXHR) {
 			<button type="submit" class="btn btn-primary" onformchange="validateCredentials();" onclick="return validateUserCredentials();">Login</button>
 		</form>
 		<br />
-		<div class="row">
+		<div class="row" style="padding-left: 3%;">
 			<!-- added data-backdrop="static" data-keyboard="false" to avoid closing modal, when user clicks on outside modal box.-->
-			<div class="col-sm-2"> <button type="submit" class="btn btn-primary" data-target="#signupModal" onclick="clearSelectionOnSignUpClick();" data-backdrop="static" data-keyboard="false" data-toggle="modal">Sign Up</button> </div>
+			<button type="submit" class="btn btn-primary" data-target="#signupModal" onclick="clearSelectionOnSignUpClick();" data-backdrop="static" data-keyboard="false" data-toggle="modal">Sign Up</button>
 				<div class="modal bg-info" id="signupModal" tabindex="-1">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -134,9 +134,10 @@ function responseLoginCallBack(flag, status, jqXHR) {
 						</div>
 					</div>
 				</div>
-			<div class="col-sm-2"><strong><p>New to App?</p></strong></div>
+			<strong><p>New to App?</p></strong>
 		</div>
 	</div>
+	<div  class="container col-lg-3"></div>
 	</div>
 	</div>
 	

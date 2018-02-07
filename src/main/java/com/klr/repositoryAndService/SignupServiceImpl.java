@@ -204,5 +204,30 @@ public class SignupServiceImpl implements RepositoryService {
 		}
 		return flag;
 	}
+
+	@Override
+	public void updateEnableFlag(Map<String, ? extends Object> input) {
+		
+		String sql = "update user_login_profile set isenabled = ? where token = ?;";
+		Connection conn = null;
+
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "Y");
+			ps.setString(2, input.get("token").toString());
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			//Do nothing;
+
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
 	
 }

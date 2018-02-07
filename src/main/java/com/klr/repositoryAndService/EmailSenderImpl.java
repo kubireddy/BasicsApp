@@ -55,8 +55,11 @@ public class EmailSenderImpl implements EmailSender {
 			message.setRecipients(Message.RecipientType.TO,
 				InternetAddress.parse(input.get("EmailId").toString()));
 			message.setSubject("Authentication Token");
-			message.setText("Dear User,"
-				+ "\n\nPlease find the Security Token to Continue with SignUp : "+input.get("token").toString());
+			message.setText("***Time Management System***"
+					+"\n\nDear User,"
+				+ "\n\nYour time management authentication token is "+input.get("token").toString()
+				+"\n\n Best Regards,"
+				+"\nTime Management Services.");
 
 			Transport.send(message);
 

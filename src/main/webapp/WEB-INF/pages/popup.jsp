@@ -99,7 +99,7 @@
 </head>
 <body>
 	<!-- No worries we not need to set the padding or does not need div container bcoz its being called in another JSP -->
-	<form role="form" id="signUpForm" action="signup" method="post" style="display:none">
+	<form role="form" id="signUpForm" action="userSignup" method="post" style="display:none">
 		<div class="form-group">
 			<label for="employerIdentity">Employer Identity*</label> <input type="text"
 				class="form-control" id="employerIdentity" name="employerIdentity"
@@ -149,19 +149,13 @@
 			data-sitekey="6Ld0LikUAAAAAFTY5TOCkpgo0tM6mRHSrs5yXK5D"></div>
 		<br>
 		<div class="row">
-			<div class="col-sm-2">
 				<button type="submit" class="btn btn-primary" form="signUpForm"
 					id="signupBurronId" disabled="disabled"
 					onclick="return validateOnRegister();">Register</button>
-			</div>
-			<div class="col-sm-2">
 				<button class="btn btn-primary" data-dismiss="modal"
 					form="signUpForm" onclick="setSelectVal(); clearOnCancel(); validate();">Close</button>
-			</div>
-			<div class="col-sm-2">
 				<button class="btn btn-danger" type="reset" form="signUpForm"
 					onclick="clearOnCancel(); validate();">Reset</button>
-			</div>
 		</div>
 	</form>
 	
@@ -178,7 +172,7 @@
 		</div>
 		<!-- verifying mail on onKeyUP and KeyDown to trigger the Copy Paste Scenario. -->
 		<div class="form-group"> 
-			<label for="companyId">Company Id*</label> <input type="email"
+			<label for="companyId">Company Email Id*</label> <input type="email"
 				class="form-control" id="companyId" name="companyId"
 				placeholder="Email Id" onKeyUp="validateEmployer(); validateEmployerExistance();" onkeydown="validateEmployerExistance();" required>
 			<div>
@@ -204,16 +198,10 @@
 		<div><input type="checkbox" name="terms" id="terms" onchange="checkBox();">  I Agree Terms & Coditions</div>
 		<br>
 		<div class="row">
-			<div class="col-sm-2">
 				<button type="submit" class="btn btn-primary" onclick="return validateOnRegisterEmployer();" id="signUpEmployerButtonId" form="employerSignUpForm">Register</button>
-			</div>
-			<div class="col-sm-2">
 				<button class="btn btn-primary" data-dismiss="modal"
 					form="employerSignUpForm" onclick="setSelectVal(); clearOnCancelEmployer(); validateEmployer();">Close</button>
-			</div>
-			<div class="col-sm-2">
 				<button class="btn btn-danger" type="reset" onclick="clearOnCancelEmployer(); validateEmployer();" form="employerSignUpForm">Reset</button>
-			</div>
 		</div>
 	</form>
 	
